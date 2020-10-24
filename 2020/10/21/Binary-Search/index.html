@@ -30,7 +30,7 @@
 <meta property="og:description" content="Principles of Binary Search: We must guarantee that the search space decresses to one half roughly over time (after each iteration). We must guarantee that the target (if exist) cannot be ruled out ac">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-22T05:12:03.000Z">
-<meta property="article:modified_time" content="2020-10-22T05:26:55.183Z">
+<meta property="article:modified_time" content="2020-10-24T07:42:31.347Z">
 <meta property="article:author" content="Zichang Liu">
 <meta property="article:tag" content="Array">
 <meta name="twitter:card" content="summary">
@@ -296,10 +296,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-10-21 22:12:03 / Modified: 22:26:55" itemprop="dateCreated datePublished" datetime="2020-10-21T22:12:03-07:00">2020-10-21</time>
+      <time title="Created: 2020-10-21 22:12:03" itemprop="dateCreated datePublished" datetime="2020-10-21T22:12:03-07:00">2020-10-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-24 00:42:31" itemprop="dateModified" datetime="2020-10-24T00:42:31-07:00">2020-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -339,6 +345,8 @@
 <li>We must guarantee that the target (if exist) cannot be ruled out accidentally, when we change the value of Left or Right.</li>
 </ol>
 <p><strong>Assumption: Array has to be sorted, ascending or descending.</strong></p>
+<a id="more"></a>
+
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>不能误删可能targe的原则 决定了left/right = mid (+/- 1);<br>从而决定了当只剩两个元素时, 如果二分策略为left = mid, 搜索区域将可能不会持续缩小导致死循环<br>从而决定了跳出loop的条件;<br>从而决定了在loop结束后剩余的元素个数<br>从而决定了是否需要post-operation.</p>
 <h3 id="小trick"><a href="#小trick" class="headerlink" title="小trick:"></a>小trick:</h3><ol>
 <li>如果采用了left = mid || right = mid, 则不能使用left &lt;= right (left与right错位时终止);</li>

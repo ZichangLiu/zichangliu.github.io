@@ -30,7 +30,7 @@
 <meta property="og:description" content="N1 -&gt; N2 -&gt; N3 -&gt; N4 -&gt; … -&gt; N1000 -&gt; NULL 链表问题都是inplace的, 所有结点在内存中都是原地不动的, 变化的只有结点里的小纸条(下一结点的地址) Key points: When you want to dereference a ListNode, make sure it is not a NULL poin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-22T05:40:14.000Z">
-<meta property="article:modified_time" content="2020-10-22T05:43:55.627Z">
+<meta property="article:modified_time" content="2020-10-24T07:41:13.243Z">
 <meta property="article:author" content="Zichang Liu">
 <meta property="article:tag" content="Linked List">
 <meta name="twitter:card" content="summary">
@@ -296,10 +296,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-10-21 22:40:14 / Modified: 22:43:55" itemprop="dateCreated datePublished" datetime="2020-10-21T22:40:14-07:00">2020-10-21</time>
+      <time title="Created: 2020-10-21 22:40:14" itemprop="dateCreated datePublished" datetime="2020-10-21T22:40:14-07:00">2020-10-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-24 00:41:13" itemprop="dateModified" datetime="2020-10-24T00:41:13-07:00">2020-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -340,6 +346,8 @@
 <li>When you want to dereference a ListNode, make sure it is not a NULL pointer<br> //ListNode p = new ListNode(10);<br>   p.value<br>   p.next.value   //“.”is an action that is called de-reference</li>
 <li>Never ever lose the control of the head pointer of the linkedList, or you cannot get access to other nodes anymore.</li>
 </ol>
+<a id="more"></a>
+
 <p><strong>DummyHead:</strong><br>When we want to build a LinkedList from scratch (initially zero nodes), in order to avoid null pointer dereference (NPE), we need to use a dummy head.<br>    ListNode dummy = new ListNode(0);<br>    dummy.next = N1;<br>    return dummy.next;<br><strong>Tail:</strong><br>When we want to append a new Node to the end of the LinkedList, we need to maintain a tail pointer, besides the header at the beginning of the algorithm.<br>    tail.next = cur;<br>    tail = cur;<br>//DummyHead is a new node, but tail is not a new node. Tail can be treated as a pointer that stay at dummyHead or current node.</p>
 <h2 id="When-to-use-Iterative-way-Recursive-way"><a href="#When-to-use-Iterative-way-Recursive-way" class="headerlink" title="When to use Iterative way / Recursive way"></a>When to use Iterative way / Recursive way</h2><p>a. In real work environment, consider using iterative way first to avoid call stack overflow.<br>b. In interview environment:<br>    i.  for tree related problems, usually use recursion way is more preferred.<br>    ii. for other problems. you can evaluate the real problem:<br>        1. if you can use both methods are their time complexity are the same, then you can use either way.<br>        2. if their time complexity are different (Fibo: recur vs dp), pick smaller one.</p>
 <h2 id="Classic-questions"><a href="#Classic-questions" class="headerlink" title="Classic questions:"></a>Classic questions:</h2><ol>

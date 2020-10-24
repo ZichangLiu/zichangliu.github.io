@@ -292,10 +292,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-10-21 22:40:14 / Modified: 22:43:55" itemprop="dateCreated datePublished" datetime="2020-10-21T22:40:14-07:00">2020-10-21</time>
+      <time title="Created: 2020-10-21 22:40:14" itemprop="dateCreated datePublished" datetime="2020-10-21T22:40:14-07:00">2020-10-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-24 00:41:13" itemprop="dateModified" datetime="2020-10-24T00:41:13-07:00">2020-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -336,18 +342,14 @@
 <li>When you want to dereference a ListNode, make sure it is not a NULL pointer<br> //ListNode p = new ListNode(10);<br>   p.value<br>   p.next.value   //“.”is an action that is called de-reference</li>
 <li>Never ever lose the control of the head pointer of the linkedList, or you cannot get access to other nodes anymore.</li>
 </ol>
-<p><strong>DummyHead:</strong><br>When we want to build a LinkedList from scratch (initially zero nodes), in order to avoid null pointer dereference (NPE), we need to use a dummy head.<br>    ListNode dummy = new ListNode(0);<br>    dummy.next = N1;<br>    return dummy.next;<br><strong>Tail:</strong><br>When we want to append a new Node to the end of the LinkedList, we need to maintain a tail pointer, besides the header at the beginning of the algorithm.<br>    tail.next = cur;<br>    tail = cur;<br>//DummyHead is a new node, but tail is not a new node. Tail can be treated as a pointer that stay at dummyHead or current node.</p>
-<h2 id="When-to-use-Iterative-way-Recursive-way"><a href="#When-to-use-Iterative-way-Recursive-way" class="headerlink" title="When to use Iterative way / Recursive way"></a>When to use Iterative way / Recursive way</h2><p>a. In real work environment, consider using iterative way first to avoid call stack overflow.<br>b. In interview environment:<br>    i.  for tree related problems, usually use recursion way is more preferred.<br>    ii. for other problems. you can evaluate the real problem:<br>        1. if you can use both methods are their time complexity are the same, then you can use either way.<br>        2. if their time complexity are different (Fibo: recur vs dp), pick smaller one.</p>
-<h2 id="Classic-questions"><a href="#Classic-questions" class="headerlink" title="Classic questions:"></a>Classic questions:</h2><ol>
-<li>Reverse a linked list(a.Iterative way / b.Recursive way)</li>
-<li>Find the middle node of a linked list (online vs offline algorithm)</li>
-<li>Check if linkedlist has a cycle</li>
-<li>Insert in sorted linkedlist</li>
-<li>Merge two sorted linkedlist O(nlogn)</li>
-<li>ReOrder linkedlist</li>
-<li>Partition linkedlist</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/21/Linked-List/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -397,10 +399,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-10-21 22:27:25 / Modified: 22:39:00" itemprop="dateCreated datePublished" datetime="2020-10-21T22:27:25-07:00">2020-10-21</time>
+      <time title="Created: 2020-10-21 22:27:25" itemprop="dateCreated datePublished" datetime="2020-10-21T22:27:25-07:00">2020-10-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-24 00:42:03" itemprop="dateModified" datetime="2020-10-24T00:42:03-07:00">2020-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -435,54 +443,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h1><p><strong>表象上: Function calls itself</strong><br><strong>实际上: Boil down a big problem to smaller ones (size n deqends on size n-1, or n-2 or …n/2)</strong></p>
+          <p><strong>表象上: Function calls itself</strong><br><strong>实际上: Boil down a big problem to smaller ones (size n deqends on size n-1, or n-2 or …n/2)</strong></p>
 <h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation:"></a>Implementation:</h3><ol>
 <li>Base case: smallest problem to solve</li>
 <li>Recursive rule: how to make the problem smaller (if we can resolve the same problem but with a smaller size, then what is left to do for the current problem size n)</li>
 </ol>
-<p>Example: Fibonacci sequence<br>Base case: F(0) = 0; F(1) = 1;<br>Recursive rule: F(n) = F(n-1) + F(n-2);</p>
-<p>Call Stack: can be regarded as a global accessible information that tells you what happened before each break point in each level.</p>
-<p>Time complexity:<br>    the sum of time complexity of all nodes in the recursion tree<br>    所有节点时间复杂度的和<br>Space complexity:<br>    the sum of space complexity of all nodes on a pink path (a path from top to bottom)<br>    一条直上直下的粉色路径上所有节点的空间复杂度的和</p>
-<h1 id="Recursion和各种数据结构的结合"><a href="#Recursion和各种数据结构的结合" class="headerlink" title="Recursion和各种数据结构的结合"></a>Recursion和各种数据结构的结合</h1><h2 id="1D-2D-array"><a href="#1D-2D-array" class="headerlink" title="1D / 2D array"></a>1D / 2D array</h2><ol>
-<li>1D-array: 二分法比较常见<br> 1.1 MergeSort<br> 1.2 QuickSort</li>
-<li>2D-array:<br> 2.1 8 queens -&gt; n queens: Key Insight: 每一行有且仅有一个皇后<pre><code> 逐层(row by row)递归
- DFS: a. 8 levels, each level represents considering one queen
-      b. at most 8 branches
- Base case: the last row is done, 0 row left
- Recursive rule: iff position(i,j) valid -&gt; go to the next row: (i + 1)
- time: O(n ^ n)
- 思考题: if there are obstacles on the board</code></pre>
- 2.2 Print 2D array in spiral order (N * N)</li>
-</ol>
-<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><ol>
-<li>Reverse a LinkedList</li>
-<li>Reverse a LinkedList pair by pair</li>
-<li>Reverse a binary upside down<br> Given a binary tree where all the right nodes are leaf nodes, flip it upside down and turn it into a tree with left leaf nodes.<pre><code> root.left.left = root.right;
- root.left.right = root;
- root.left = null;
- root.right = null;</code></pre>
-</li>
-</ol>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ol>
-<li>Reverse a String</li>
-<li>A word such as “book” can be abbreviated to 4, 1o1k, b3, b2k, etc. Given a String and an abbreviation, return if the String matches the abbreviation. Assume the original String only contains alphabetic characters.<br> Base case:<br> Recursive rule: boolean abbrevMatch(String text, int tStart, String pattern, int pStrat)</li>
-</ol>
-<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><p>Binary Tree往往是最常见的, 和recursion结合最紧密的面试题目类型<br><strong>Reasons:</strong><br>a. 每层的node具备的性质, 传递的值和下一层的性质往往一致, 比较容易定义recursive rule<br>b. Base case(generally): null pointer under the leaf node</p>
-<h3 id="Way-of-thinking-Tricks"><a href="#Way-of-thinking-Tricks" class="headerlink" title="Way of thinking (Tricks)"></a>Way of thinking (Tricks)</h3><ol>
-<li>What do you expect from your lchild / rchild? (Usually it is the return type of the recursion function)</li>
-<li>What do you want to do in the current layer?</li>
-<li>What do you want to report to your parent? (Same as Q1 == Q3)</li>
-</ol>
-<p><strong>从下往上返值(int, boolean, etc.): 通过return将需要的结果返回上来<br>从上往下传值: 需要在函数头中携带待传变量一步一步往下走</strong><br>    最经典例题: Lowest Common Ancestor (LCA)<br>    2.1 a&amp;b同树<br>            case1. a与b直接隶属<br>            case2. a与b不直接隶属<br>    2.2 a&amp;b不一定同树<br>        a. if return c:<br>            ab不直接隶属 且 ab一定同树<br>        b. if return a or b:<br>            ab直接隶属 或 ab异树<br>    2.3 Lowest Common Ancestor of k nodes<br>    2.4 Lowest Common Ancestor in k-nary tree<br>    2.5 Max path sum binary tree II (path from any node to any node)</p>
-<h1 id="Recursion和树的四类问题"><a href="#Recursion和树的四类问题" class="headerlink" title="Recursion和树的四类问题"></a>Recursion和树的四类问题</h1><h2 id="Q1-Tree-Recursion-第一类问题-从下往上返值-int-boolean-etc-的三部曲方法"><a href="#Q1-Tree-Recursion-第一类问题-从下往上返值-int-boolean-etc-的三部曲方法" class="headerlink" title="Q1. Tree + Recursion 第一类问题: 从下往上返值(int, boolean, etc.)的三部曲方法"></a>Q1. Tree + Recursion 第一类问题: 从下往上返值(int, boolean, etc.)的三部曲方法</h2><p>Use recursion to return values in a bottom-up way in binary tree</p>
-<h4 id="1-1-isBalanced-time-O-n-and-space-O-height-the-old-version-is-O-nlogn-time"><a href="#1-1-isBalanced-time-O-n-and-space-O-height-the-old-version-is-O-nlogn-time" class="headerlink" title="1.1 isBalanced (time O(n) and space O(height), the old version is O(nlogn) time)"></a>1.1 isBalanced (time O(n) and space O(height), the old version is O(nlogn) time)</h4><h4 id="1-2-MaxSumPath-from-any-node-to-any-node-路径无限制"><a href="#1-2-MaxSumPath-from-any-node-to-any-node-路径无限制" class="headerlink" title="1.2 MaxSumPath from any node to any node (路径无限制)"></a>1.2 MaxSumPath from any node to any node (路径无限制)</h4><h4 id="1-3-MaxSumPath-from-a-leaf-node-to-another-人字形路径"><a href="#1-3-MaxSumPath-from-a-leaf-node-to-another-人字形路径" class="headerlink" title="1.3 MaxSumPath from a leaf node to another (人字形路径)"></a>1.3 MaxSumPath from a leaf node to another (人字形路径)</h4><h2 id="Q2-Tree-Recursion-第二类问题-Path-Problem-in-binary-tree"><a href="#Q2-Tree-Recursion-第二类问题-Path-Problem-in-binary-tree" class="headerlink" title="Q2. Tree + Recursion 第二类问题: Path Problem in binary tree"></a>Q2. Tree + Recursion 第二类问题: Path Problem in binary tree</h2><p>Tree相关问题, 路径种类可以分为两大类<br>Case1: 人字形path, 这类题一般需要从下往上传int value<br>Case2: 从root往下(直上直下路径)path - complete path from leaf to root<br>                                  - sub-section of complete path from leaf to root</p>
-<h4 id="2-1-MaxSumPath-from-a-leaf-node-to-root-直上直下路径"><a href="#2-1-MaxSumPath-from-a-leaf-node-to-root-直上直下路径" class="headerlink" title="2.1 MaxSumPath from a leaf node to root (直上直下路径)"></a>2.1 MaxSumPath from a leaf node to root (直上直下路径)</h4><h4 id="2-2-MaxSumPath-from-sub-section-of-complete-path-from-leaf-to-root-that-is-equal-to-target"><a href="#2-2-MaxSumPath-from-sub-section-of-complete-path-from-leaf-to-root-that-is-equal-to-target" class="headerlink" title="2.2 MaxSumPath from sub-section of complete path from leaf to root that is equal to target"></a>2.2 MaxSumPath from sub-section of complete path from leaf to root that is equal to target</h4><p>Solution0:<br>Pre-order to iterate over the whole tree, and for each current node X, we do a for-loop in {X…root}<br>time O(n ^ 2) space O(height)<br>Solution1: (Recursion + DP path-prefix in hashset)<br>               Pre-order to iterate over the whole tree, and for each current node X, instead of doing a for-loop, we maintain a pat-prefix sum<br>                time O(n) space O(height)</p>
-<h4 id="2-3-MaxSumPath-from-sub-section-of-complete-path-from-leaf-to-root"><a href="#2-3-MaxSumPath-from-sub-section-of-complete-path-from-leaf-to-root" class="headerlink" title="2.3 MaxSumPath from sub-section of complete path from leaf to root"></a>2.3 MaxSumPath from sub-section of complete path from leaf to root</h4><h2 id="Q3-Tree-Recursion-第三类问题-Tree-Serialization-Problem"><a href="#Q3-Tree-Recursion-第三类问题-Tree-Serialization-Problem" class="headerlink" title="Q3. Tree + Recursion 第三类问题: Tree Serialization Problem"></a>Q3. Tree + Recursion 第三类问题: Tree Serialization Problem</h2><p>3.1 Binary heap: complete tree -&gt; level-order array<br>3.2 Given a binary tree, flatten it to a linked list in-placep<br>    Method1: Pre-order<br>    Method2: Post-order<br>    Metheod3: In-order</p>
-<h2 id="Q4-Tree-Recursion-第四类问题-Tree-De-serialization-Problem"><a href="#Q4-Tree-Recursion-第四类问题-Tree-De-serialization-Problem" class="headerlink" title="Q4. Tree + Recursion 第四类问题: Tree De-serialization Problem"></a>Q4. Tree + Recursion 第四类问题: Tree De-serialization Problem</h2><p>Discussion:<br>Reconstruct a tree by using xxx-order and in-order traversal sequences.<br>此类问题的要点是把global的问题一分为二(Recursively), 每半边返回一个subtree的root node</p>
-<h4 id="4-1-Reconstruct-a-tree-with-no-duplicate-values-with-pre-and-in-order-sequences-of-all-nodes"><a href="#4-1-Reconstruct-a-tree-with-no-duplicate-values-with-pre-and-in-order-sequences-of-all-nodes" class="headerlink" title="4.1 Reconstruct a tree (with no duplicate values) with pre and in-order sequences of all nodes"></a>4.1 Reconstruct a tree (with no duplicate values) with pre and in-order sequences of all nodes</h4><p>Input: int[] in, int[] pre<br>    Data Structure: Map&lt;Integer, Integer&gt; idxMap<br>                    maps each node in the inorder array to its index in inorder array<br>                    to get the number of node in left subtree and right subtree of each root<br>    Locate the root: TreeNode root = new TreeNode(pre[preLeft])<br>    Recursion function returns subtree’s root<br>    preLeft and preRight represents the range of coresponding subtree in int[] pre<br>      inLeft and inRight represents the range of coresponding subtree in int[] in<br>      the core thinking of divide and conque is to locate the range in both array to cut down the problem</p>
-<h4 id="4-2-Reconstruct-a-BST-with-no-duplicate-values-with-post-order-sequences-of-all-nodes"><a href="#4-2-Reconstruct-a-BST-with-no-duplicate-values-with-post-order-sequences-of-all-nodes" class="headerlink" title="4.2 Reconstruct a BST (with no duplicate values) with post-order sequences of all nodes"></a>4.2 Reconstruct a BST (with no duplicate values) with post-order sequences of all nodes</h4><p>BST -&gt; isOrder 单调递增 -&gt; inOrder = sort(postOrder)</p>
-<h4 id="4-3-Reconstruct-a-tree-with-no-duplicate-values-with-level-amp-in-order-sequences-of-all-nodes"><a href="#4-3-Reconstruct-a-tree-with-no-duplicate-values-with-level-amp-in-order-sequences-of-all-nodes" class="headerlink" title="4.3 Reconstruct a tree (with no duplicate values) with level&amp;in-order sequences of all nodes"></a>4.3 Reconstruct a tree (with no duplicate values) with level&amp;in-order sequences of all nodes</h4><p>Input: Two arrays that represent Inorder and level order traversals of a Binary Tree<br>        index:  {0  1  2  3  4  5  6}<br>        inorder:{4  8 10 12 14 20 22}<br>        level:  {20 8 22 4  12 10 14}<br>    The 4th level to understand recursion:<br>    The input argument list of each recursion function in each call-stack level must be consistent with each other<br>    Step1: Pick the first element from the level-order, say 20, Find the index of 20 in the in-order sequence. Thus, the in-order sequence can be divided into two parts.<br>    Step2: How to divide the level-order into two part?<br>        We need to build the level-order for the left subtree and for the right subtree.<br>        Iterate through each element in the level-order, and check if it belongs to the left or the right subtree, using indexMap:<br>            Case1: if indexMap[x] &lt; indexMap[root]: add x to left level-order<br>            Case2: if indexMap[x] &gt; indexMap[root]: add x to right level-order<br>    Left Half(8 as subtree root) inorder: {4 8 10 12 14}, vs Right = {22}<br>                                 level:   {8 4 12 10 14}, vs Right = {22}<br>    Best case time = O(nlogn)<br>    Best case space = n + n/2 + n/4 + n/8 + … = O(n)<br>    Worst time O(n^2) space O(n^2)</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/21/Recursion/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -532,10 +505,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-10-21 22:12:03 / Modified: 22:26:55" itemprop="dateCreated datePublished" datetime="2020-10-21T22:12:03-07:00">2020-10-21</time>
+      <time title="Created: 2020-10-21 22:12:03" itemprop="dateCreated datePublished" datetime="2020-10-21T22:12:03-07:00">2020-10-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-24 00:42:31" itemprop="dateModified" datetime="2020-10-24T00:42:31-07:00">2020-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -575,29 +554,14 @@
 <li>We must guarantee that the target (if exist) cannot be ruled out accidentally, when we change the value of Left or Right.</li>
 </ol>
 <p><strong>Assumption: Array has to be sorted, ascending or descending.</strong></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>不能误删可能targe的原则 决定了left/right = mid (+/- 1);<br>从而决定了当只剩两个元素时, 如果二分策略为left = mid, 搜索区域将可能不会持续缩小导致死循环<br>从而决定了跳出loop的条件;<br>从而决定了在loop结束后剩余的元素个数<br>从而决定了是否需要post-operation.</p>
-<h3 id="小trick"><a href="#小trick" class="headerlink" title="小trick:"></a>小trick:</h3><ol>
-<li>如果采用了left = mid || right = mid, 则不能使用left &lt;= right (left与right错位时终止);</li>
-<li>如果采用了left = mid, 则不能使用left &lt; right (剩一个元素时终止);</li>
-<li>大多数情况都可以使用left &lt; right - 1 (剩两个元素时终止), 但需要post-operation.<br>(以上未考虑在loop中直接return或break的情况)</li>
-</ol>
-<p>第三种为最保险的策略, 因为不论何时剩余部分一定有三个或以上的元素，不会出现mid等于left的情况，所以不会出现死循环，每轮搜索范围必会减小.</p>
-<h3 id="基础题型"><a href="#基础题型" class="headerlink" title="基础题型:"></a>基础题型:</h3><ol>
-<li>Classical Binary Search (01问题, 找到返index, 找不到返回-1)<br> 1.1 Classical Binary Search in 2D Space (二维数组)<pre><code>  r = mid / col;
-  c = mid % col;</code></pre>
-</li>
-<li>Closest Element to Target</li>
-<li>First Occurrence</li>
-<li>Last Occurrence</li>
-<li>Closest k Elements in sorted array</li>
-<li>Smallest Element that is Larger than Target</li>
-<li>K-th Smallest in Two Sorted Arrays</li>
-</ol>
-<h3 id="复合题型"><a href="#复合题型" class="headerlink" title="复合题型:"></a>复合题型:</h3><ol>
-<li>Total Occurrence (First Occurrence + Last Occurrence)</li>
-<li>Search In Unknown Sized Sorted Array</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/21/Binary-Search/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -655,7 +619,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-10-15 01:02:56" itemprop="dateModified" datetime="2020-10-15T01:02:56-07:00">2020-10-15</time>
+        <time title="Modified: 2020-10-24 00:43:28" itemprop="dateModified" datetime="2020-10-24T00:43:28-07:00">2020-10-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -692,19 +656,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/14/hello-world/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -730,7 +689,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/10/14/myFirstBlog/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/10/13/myFirstBlog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -744,7 +703,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/14/myFirstBlog/" class="post-title-link" itemprop="url">my First Blog</a>
+            <a href="/2020/10/13/myFirstBlog/" class="post-title-link" itemprop="url">My Testing Blog</a>
         </h2>
 
         <div class="post-meta-container">
@@ -755,14 +714,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-10-14 14:20:36" itemprop="dateCreated datePublished" datetime="2020-10-14T14:20:36-07:00">2020-10-14</time>
+      <time title="Created: 2020-10-13 14:20:36" itemprop="dateCreated datePublished" datetime="2020-10-13T14:20:36-07:00">2020-10-13</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-10-21 22:25:39" itemprop="dateModified" datetime="2020-10-21T22:25:39-07:00">2020-10-21</time>
+        <time title="Modified: 2020-10-24 13:16:56" itemprop="dateModified" datetime="2020-10-24T13:16:56-07:00">2020-10-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -783,8 +742,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/10/14/myFirstBlog/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/14/myFirstBlog/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/10/13/myFirstBlog/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/13/myFirstBlog/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -798,13 +757,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h5 id="这是五级标题"><a href="#这是五级标题" class="headerlink" title="这是五级标题"></a>这是五级标题</h5><h6 id="这是六级标题"><a href="#这是六级标题" class="headerlink" title="这是六级标题"></a>这是六级标题</h6><p><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em>`<br><strong><em>这是斜体加粗的文字</em></strong><br><del>这是加删除线的文字</del></p>
-<hr>
-<hr>
-<hr>
-<hr>
-<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=702257389,1274025419&fm=27&gp=0.jpg" alt="blockchain" title="区块链"><br><a target="_blank" rel="noopener" href="http://jianshu.com/">简书</a><br><a target="_blank" rel="noopener" href="http://baidu.com/">百度</a><br><code>create database hero;</code><br>    function fun(){<br>         echo “这是一句非常牛逼的代码”;<br>    }<br>    fun();</p>
-
+          <h1 id="This-is-the-primary-title"><a href="#This-is-the-primary-title" class="headerlink" title="This is the primary title"></a>This is the primary title</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/13/myFirstBlog/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
