@@ -24,13 +24,13 @@
 
   <meta name="description" content="Freedom as Autonomy">
 <meta property="og:type" content="website">
-<meta property="og:title" content="projects">
+<meta property="og:title" content="Projects">
 <meta property="og:url" content="http://localhost:4000/projects/index.html">
 <meta property="og:site_name" content="Zichang Liu">
 <meta property="og:description" content="Freedom as Autonomy">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-15T06:59:09.000Z">
-<meta property="article:modified_time" content="2020-10-15T07:01:15.725Z">
+<meta property="article:modified_time" content="2020-10-25T23:31:20.862Z">
 <meta property="article:author" content="Zichang Liu">
 <meta name="twitter:card" content="summary">
 
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>projects | Zichang Liu
+  <title>Projects | Zichang Liu
 </title>
   
 
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">4</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">9</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -150,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-projects">
@@ -202,7 +202,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -272,7 +272,7 @@
     <div class="post-block" lang="en">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">projects
+<h1 class="post-title" itemprop="name headline">Projects
 </h1>
 
 <div class="post-meta-container">
@@ -300,6 +300,13 @@
 
 
       
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -392,6 +399,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://localhost:4000/projects/index.html";
+    this.page.identifier = "projects/index.html";
+    this.page.title = "Projects";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zichang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>

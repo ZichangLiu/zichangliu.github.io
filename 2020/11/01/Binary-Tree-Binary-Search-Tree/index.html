@@ -22,22 +22,22 @@
     var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="1. Basic ConceptsKey Point: 和LinkedList一样, 不要失去对root的控制权 123456789class TreeNode&amp;#123;	int key;	TreeNode left;	TreeNode right;	&#x2F;&#x2F; TreeNode parent;	public TreeNode(int key)&amp;#123;	this.key &#x3D; key;	&amp;#125;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://localhost:4000/2020/10/14/hello-world/index.html">
+<meta property="og:title" content="Binary Tree &amp; Binary Search Tree">
+<meta property="og:url" content="http://localhost:4000/2020/11/01/Binary-Tree-Binary-Search-Tree/index.html">
 <meta property="og:site_name" content="Zichang Liu">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="1. Basic ConceptsKey Point: 和LinkedList一样, 不要失去对root的控制权 123456789class TreeNode&amp;#123;	int key;	TreeNode left;	TreeNode right;	&#x2F;&#x2F; TreeNode parent;	public TreeNode(int key)&amp;#123;	this.key &#x3D; key;	&amp;#125;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-14T23:13:51.172Z">
-<meta property="article:modified_time" content="2020-10-24T07:43:28.077Z">
+<meta property="article:published_time" content="2020-11-02T06:33:34.000Z">
+<meta property="article:modified_time" content="2020-11-02T06:48:01.421Z">
 <meta property="article:author" content="Zichang Liu">
-<meta property="article:tag" content="Testing">
-<meta property="article:tag" content="Another Tag">
+<meta property="article:tag" content="Tree">
+<meta property="article:tag" content="Recursion">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://localhost:4000/2020/10/14/hello-world/">
+<link rel="canonical" href="http://localhost:4000/2020/11/01/Binary-Tree-Binary-Search-Tree/">
 
 
 <script class="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>Hello World | Zichang Liu</title>
+  <title>Binary Tree & Binary Search Tree | Zichang Liu</title>
   
 
 
@@ -188,7 +188,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Basic-Concepts"><span class="nav-number">1.</span> <span class="nav-text">1. Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-traversal"><span class="nav-number">1.1.</span> <span class="nav-text">Tree traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Kinds-of-Binary-Tree"><span class="nav-number">1.2.</span> <span class="nav-text">Three Kinds of Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Balanced-binary-tree"><span class="nav-number">1.2.1.</span> <span class="nav-text">Balanced binary tree:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binary-Search-Tree"><span class="nav-number">1.2.2.</span> <span class="nav-text">Binary Search Tree:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Self-balancing-Binary-Search-Tree"><span class="nav-number">1.2.3.</span> <span class="nav-text">Self-balancing Binary Search Tree:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More-Discussion"><span class="nav-number">1.3.</span> <span class="nav-text">More Discussion:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%9B%B8%E5%85%B3%E9%A2%98%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">2. 相关题型:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursion%E5%9C%A8tree%E9%A2%98%E7%9B%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8%E5%A4%A7%E8%87%B4%E5%88%86%E4%B8%BA%E4%B8%A4%E7%A7%8D"><span class="nav-number">2.1.</span> <span class="nav-text">Recursion在tree题目的基本应用大致分为两种:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BST%E7%9A%84%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">BST的三种基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%A2%98%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">基本题型:</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -274,7 +274,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/10/14/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/01/Binary-Tree-Binary-Search-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -287,7 +287,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          Binary Tree & Binary Search Tree
         </h1>
 
         <div class="post-meta-container">
@@ -297,23 +297,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2020-10-14 16:13:51" itemprop="dateCreated datePublished" datetime="2020-10-14T16:13:51-07:00">2020-10-14</time>
+      <time title="Created: 2020-11-01 22:33:34 / Modified: 22:48:01" itemprop="dateCreated datePublished" datetime="2020-11-01T22:33:34-08:00">2020-11-01</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-10-24 00:43:28" itemprop="dateModified" datetime="2020-10-24T00:43:28-07:00">2020-10-24</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Test/" itemprop="url" rel="index"><span itemprop="name">Test</span></a>
+          <a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a>
         </span>
     </span>
 
@@ -326,8 +320,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/10/14/hello-world/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/14/hello-world/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/01/Binary-Tree-Binary-Search-Tree/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/01/Binary-Tree-Binary-Search-Tree/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -341,21 +335,56 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <h2 id="1-Basic-Concepts"><a href="#1-Basic-Concepts" class="headerlink" title="1. Basic Concepts"></a>1. Basic Concepts</h2><p>Key Point: 和LinkedList一样, 不要失去对root的控制权</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	TreeNode left;</span><br><span class="line">	TreeNode right;</span><br><span class="line">	<span class="comment">// TreeNode parent;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.key = key;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">//与ListNode区别: TreeNode以至GraphNode有两个/多个neighbors</span></span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="Tree-traversal"><a href="#Tree-traversal" class="headerlink" title="Tree traversal"></a>Tree traversal</h3><pre><code>1. pre-order
+2. in-order
+3. post-order</code></pre>
+<p><strong>Recursive: 区别就是何时打印自己的value</strong><br>    Trick: Base case usually refers to the null ChildNode below the leaf node.<br><strong>Iterative: 防止树高过大导致call stack overflow</strong><br>    The unfinished methods must be retained in STACK before it can return.<br>    Although it is not easy to convert all recursive solution to a ‘while loop’ soluton without any auxilliary data strcuture’s help.<br>    1. preorder: pollFirst栈顶, 右进去, 左进去<br>        因为FILO, 右孩子会一直被压在栈底直到左子树全部输出完毕, 直到栈变空, 意味着root的左右子树全部打印完毕 (相当于把stack的消耗转移到了heap上)<br>    2. inorder: 问题变成了我们不能将根直接pollFirst, 因为需要先遍历左子树<br>        额外需要一个helper来帮助判断左子树是否已经遍历完成, if helper==null, let helper == stack.pollFirst(); then helper = helper.right<br>    3. postorder:<br>        trick: reversed postorder traverse is just the modified version of preorder, for right-root-left, but space O(n) not O(h);</p>
+<h3 id="Three-Kinds-of-Binary-Tree"><a href="#Three-Kinds-of-Binary-Tree" class="headerlink" title="Three Kinds of Binary Tree"></a>Three Kinds of Binary Tree</h3><h4 id="Balanced-binary-tree"><a href="#Balanced-binary-tree" class="headerlink" title="Balanced binary tree:"></a>Balanced binary tree:</h4><p>任意节点的左右子树高度差为0或1<br>结论: 树高一定为O(logn)<br>–Complete binary tree:<br>除了最后一层的右侧可以有空节点, 必须全满</p>
+<h4 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree:"></a>Binary Search Tree:</h4><p>For every node in the BST, the values in its left subtree are all smaller than its value, and the values in its right subtree are all larger than its value.<br>    -Sorted tree, if print in in-order sequence, we can have an ascending order array.<br>    -What if dulicate values?<br>    class TreeNode {int value; int counter; left &amp; right}</p>
+<h4 id="Self-balancing-Binary-Search-Tree"><a href="#Self-balancing-Binary-Search-Tree" class="headerlink" title="Self-balancing Binary Search Tree:"></a>Self-balancing Binary Search Tree:</h4><p>search(), insert(), remove(), operations are all guaranteed to be O(logn), rather than O(height)<br>Eg. AVL Tree, Red-black Tree (TreeMap/TreeSet)<br>Just a tool, no need to know about implmentation.</p>
+<h3 id="More-Discussion"><a href="#More-Discussion" class="headerlink" title="More Discussion:"></a>More Discussion:</h3><p>Binary tree是最常见和recursion结合最紧密的面试题型<br><strong>原因:</strong></p>
+<ol>
+<li>每层的node具备的性质, 传递的值和下一层往往一致, 易于定义recursive rule</li>
+<li>Base case (generally): null pointer under the leaf node</li>
+</ol>
+<h2 id="2-相关题型"><a href="#2-相关题型" class="headerlink" title="2. 相关题型:"></a>2. 相关题型:</h2><h3 id="Recursion在tree题目的基本应用大致分为两种"><a href="#Recursion在tree题目的基本应用大致分为两种" class="headerlink" title="Recursion在tree题目的基本应用大致分为两种:"></a>Recursion在tree题目的基本应用大致分为两种:</h3><ol>
+<li>把value从上往下传递, then从下往上<ol>
+<li>BST判定方法</li>
+</ol>
+</li>
+<li>只把value从下往上传递(常见)<ol>
+<li>getHeight(Node root): 自底向上传integer value</li>
+<li>isBalanced(Node root): 自底向上传boolean value</li>
+<li>isSymmetric(Node root): 自底向上传boolean value</li>
+<li>Assign the value of each node to be the total number of nodes that belong to its left tree: 自底向上传integer value</li>
+</ol>
+</li>
+</ol>
+<p><strong>Tail Recursion:</strong><br>The recursive call is always the last execution statement. We can easily transfer the tail recursive to itertive solution as a optimiation to avoid call stack overflow.</p>
+<h3 id="BST的三种基本操作"><a href="#BST的三种基本操作" class="headerlink" title="BST的三种基本操作"></a>BST的三种基本操作</h3><ol>
+<li>Search in BST</li>
+<li>Insert in BST<br> 新插入的节点一定是新树的one of leafs<br> When the tree structure could be changed, return a new root is a common way(like recursion way of reversing a linkedList)<ol>
+<li>怎么往下走</li>
+<li>怎么利用下层返回回来的东西(挂上)</li>
+<li>怎么把操作完的结果无差别的返回回去</li>
+</ol>
+</li>
+<li>Delete in BST<br> 待删除节点可能为原树中任意节点:<ol>
+<li>叶子结点, 或只有一个孩子 (直接将自己的唯一的孩子接在自己父节点下)</li>
+<li>有两个孩子的parent节点<br> a. 将右子树中最小节点返回到被删除节点, 将其余右子树全部接在新节点下<br> b. 如果右子树root没有左孩子, 即最小节点就是root, 则特殊处理一下 </li>
+</ol>
+</li>
+</ol>
+<h3 id="基本题型"><a href="#基本题型" class="headerlink" title="基本题型:"></a>基本题型:</h3><ol>
+<li>Get the height of a binary tree.<br> 递归树和输入树相同, time: O(n), space: O(n)(糖葫芦)</li>
+<li>Check If Binary Tree Is Balanced<br> time: O(nlogn) (每层time为n, 共有logn层)</li>
+<li>Symmetric Binary Tree<br> 递归树和输入树不同, time: O(n/2) = O(n), space: O(height)</li>
+</ol>
 
     </div>
 
@@ -383,21 +412,21 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Testing/" rel="tag"># Testing</a>
-              <a href="/tags/Another-Tag/" rel="tag"># Another Tag</a>
+              <a href="/tags/Tree/" rel="tag"># Tree</a>
+              <a href="/tags/Recursion/" rel="tag"># Recursion</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/10/13/myFirstBlog/" rel="prev" title="My Testing Blog">
-                  <i class="fa fa-chevron-left"></i> My Testing Blog
+                <a href="/2020/11/01/Queue-Stack/" rel="prev" title="Queue & Stack">
+                  <i class="fa fa-chevron-left"></i> Queue & Stack
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/10/21/Binary-Search/" rel="next" title="Binary Search">
-                  Binary Search <i class="fa fa-chevron-right"></i>
+                <a href="/2020/11/01/MinHeap-PriorityQueue-%E5%A0%86-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/" rel="next" title="MinHeap/PriorityQueue 堆/优先级队列">
+                  MinHeap/PriorityQueue 堆/优先级队列 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -513,9 +542,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://localhost:4000/2020/10/14/hello-world/";
-    this.page.identifier = "2020/10/14/hello-world/";
-    this.page.title = "Hello World";
+    this.page.url = "http://localhost:4000/2020/11/01/Binary-Tree-Binary-Search-Tree/";
+    this.page.identifier = "2020/11/01/Binary-Tree-Binary-Search-Tree/";
+    this.page.title = "Binary Tree & Binary Search Tree";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
