@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpeg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="MethodologyCore IdeaDP的核心思想类似于数学归纳法:  把一个大问题(size &#x3D;&#x3D; n)的解决方案用比他小的问题们来解决, 也就是思考从问题size &#x3D; n-1增加到size &#x3D; n 的时候, 如何用小问题的solution构建大问题的solution 就是利用历史记录，来避免我们的重复计算。而这些历史记录，我们得需要一些变量来保存，一般是用一维数组或者二维数组来保存。 与r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dynamic Programming">
+<meta property="og:url" content="http://localhost:4000/2020/11/08/Dynamic-Programming/index.html">
+<meta property="og:site_name" content="Zichang Liu">
+<meta property="og:description" content="MethodologyCore IdeaDP的核心思想类似于数学归纳法:  把一个大问题(size &#x3D;&#x3D; n)的解决方案用比他小的问题们来解决, 也就是思考从问题size &#x3D; n-1增加到size &#x3D; n 的时候, 如何用小问题的solution构建大问题的solution 就是利用历史记录，来避免我们的重复计算。而这些历史记录，我们得需要一些变量来保存，一般是用一维数组或者二维数组来保存。 与r">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-08T08:06:07.000Z">
+<meta property="article:modified_time" content="2020-11-08T08:26:34.368Z">
+<meta property="article:author" content="Zichang Liu">
+<meta property="article:tag" content="Array">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://localhost:4000/2020/11/08/Dynamic-Programming/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Dynamic Programming | Zichang Liu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Zichang Liu</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome to my blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/projects/" rel="section"><i class="fa fa-sitemap fa-fw"></i>Projects</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Methodology"><span class="nav-number">1.</span> <span class="nav-text">Methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Idea"><span class="nav-number">1.1.</span> <span class="nav-text">Core Idea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP%E7%9A%84%E4%B8%89%E5%A4%A7%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">DP的三大步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP%E7%9A%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">DP的优化:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP%E7%9A%84%E8%A7%A3%E9%A2%98%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">DP的解题常用方法:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E7%9A%84original-data-such-as-a-rope-a-word-a-palindrome-%E6%B1%82MAX-or-MIN-cut-merge-etc"><span class="nav-number">1.4.1.</span> <span class="nav-text">一维的original data (such as a rope, a word, a palindrome), 求MAX or MIN (cut, merge, etc..)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E7%9A%84original-data"><span class="nav-number">1.4.2.</span> <span class="nav-text">二维的original data</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">题型:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fibonacci"><span class="nav-number">2.1.</span> <span class="nav-text">Fibonacci</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Longest-Ascending-SubArray-Contiguous-elements-in-an-array"><span class="nav-number">2.2.</span> <span class="nav-text">Longest Ascending SubArray (Contiguous elements in an array)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maximal-Product-when-Cutting-Rope"><span class="nav-number">2.3.</span> <span class="nav-text">Maximal Product when Cutting Rope</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Two-ways"><span class="nav-number">2.3.1.</span> <span class="nav-text">Two ways</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dictionary-word-problem"><span class="nav-number">2.3.2.</span> <span class="nav-text">Dictionary word problem</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jump-Game"><span class="nav-number">2.4.</span> <span class="nav-text">Jump Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Largest-sum-of-a-subarray"><span class="nav-number">2.5.</span> <span class="nav-text">Largest sum of a subarray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Edit-Distance"><span class="nav-number">2.6.</span> <span class="nav-text">Edit Distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Largest-square-of-1%E2%80%99s-in-a-binary-matrix"><span class="nav-number">2.7.</span> <span class="nav-text">Largest square of 1’s in a binary matrix</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zichang Liu"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Zichang Liu</p>
+  <div class="site-description" itemprop="description">Freedom as Autonomy</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zichangliu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zichangliu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liuzichang9978@gmail.com" title="E-Mail → mailto:liuzichang9978@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zichang.liu.39/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;zichang.liu.39&#x2F;" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/zichang-liu-94511217a/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;zichang-liu-94511217a&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/zachary_zichangliu/" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;zachary_zichangliu&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/08/Dynamic-Programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Zichang Liu">
+      <meta itemprop="description" content="Freedom as Autonomy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zichang Liu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dynamic Programming
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-11-08 00:06:07 / Modified: 00:26:34" itemprop="dateCreated datePublished" datetime="2020-11-08T00:06:07-08:00">2020-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/11/08/Dynamic-Programming/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/08/Dynamic-Programming/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h2><h3 id="Core-Idea"><a href="#Core-Idea" class="headerlink" title="Core Idea"></a>Core Idea</h3><p><strong>DP的核心思想类似于数学归纳法:</strong></p>
+<ol>
+<li>把一个大问题(size == n)的解决方案用比他小的问题们来解决, 也就是思考从问题size = n-1增加到size = n 的时候, 如何用小问题的solution构建大问题的solution</li>
+<li>就是利用历史记录，来避免我们的重复计算。而这些历史记录，我们得需要一些变量来保存，一般是用一维数组或者二维数组来保存。</li>
+<li>与recursion的关系:<ul>
+<li>Recursion从大到小来解决问题, 不记录任何sub-solution, 只要考虑<ul>
+<li>base case</li>
+<li>recursive rule</li>
+</ul>
+</li>
+<li>DP从小到大来解决问题, 记录sub-solution<ul>
+<li>由size(&lt; n)的subsolution (s) -&gt; size(n) solution</li>
+<li>base case</li>
+<li>induction rule</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="DP的三大步骤"><a href="#DP的三大步骤" class="headerlink" title="DP的三大步骤"></a>DP的三大步骤</h3><ol>
+<li><strong>定义数组元素的含义:</strong><br>我们会用一个数组，来保存历史数组，假设用一维数组dp[], 规定你这个数组元素的含义: dp[i]是代表什么意思？</li>
+<li><strong>找出数组元素之间的关系式:</strong><br>当我们要计算 dp[n] 时，是可以利用 dp[n-1]，dp[n-2]…..dp[1]，来推出 dp[n] 的，也就是可以利用历史数据来推出新的元素值，所以我们要找出数组元素之间的关系式，例如 <code>dp[n] = dp[n-1] + dp[n-2]</code>，这个就是他们的关系式了。这一步，也是最难的一步</li>
+<li><strong>找出初始值:</strong><br>如dp[3] = dp[2] + dp[1], 而dp[2]和dp[1]是不能再分解的, 所以我们必须要能够直接获得 dp[2]和dp[1]的值, 这就是所谓的初始值</li>
+</ol>
+<h3 id="DP的优化"><a href="#DP的优化" class="headerlink" title="DP的优化:"></a>DP的优化:</h3><p><strong>优化的核心:</strong> 分析<code>M[i]</code>或<code>M[i][j]</code>的induction rule, 可根据画图来分析</p>
+<ul>
+<li>一维DP O(n) 空间可优化为O(1)</li>
+<li>二维DP O(n * m) 空间可优化为 O(n)<br>基本80%的二维dp都可以优化成一维矩阵的dp，核心就是要画二维dp的矩阵图，看他们的值依赖</li>
+</ul>
+<h3 id="DP的解题常用方法"><a href="#DP的解题常用方法" class="headerlink" title="DP的解题常用方法:"></a>DP的解题常用方法:</h3><h4 id="一维的original-data-such-as-a-rope-a-word-a-palindrome-求MAX-or-MIN-cut-merge-etc"><a href="#一维的original-data-such-as-a-rope-a-word-a-palindrome-求MAX-or-MIN-cut-merge-etc" class="headerlink" title="一维的original data (such as a rope, a word, a palindrome), 求MAX or MIN (cut, merge, etc..)"></a>一维的original data (such as a rope, a word, a palindrome), 求MAX or MIN (cut, merge, etc..)</h4><ol>
+<li>if the weight of each smallest element in the original data is identical/similar<ol>
+<li>e.g. identical: 1 meter of rope</li>
+<li>e.g. similar: a letter, a number<ul>
+<li>Then this kind of problem is usually simple:<br>Linear scan and look back to the previous element(s)</li>
+<li>For example:<ul>
+<li>Longest Ascending Subarray (when at i, look back at i-1)</li>
+<li>Longest Ascending Subsequence (when at i, look back at 1… i-1)</li>
+<li>Cut rope</li>
+<li>Cut dictionary</li>
+<li>Cut palindrome</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>If the weight are not the same:<ul>
+<li>切木头<br>从中心开花, [index = 0.1.2.3.N-1], for each M[i,j], we usually need to try out all possible k that (i &lt; k &lt; j), M[i,j] = max(M[i,k] +/-/* M[k,j]) (for all possible k)</li>
+</ul>
+</li>
+<li>Pizza问题, 从两头凑</li>
+</ol>
+<h4 id="二维的original-data"><a href="#二维的original-data" class="headerlink" title="二维的original data"></a>二维的original data</h4><ol>
+<li>Matrix问题</li>
+<li>Two Strings 寻找 Minimum Edit Distance, Longest Common SubString/SubSequence<br>一般解题方法都是S1的前i个letter和S2的前j个letter比较. Induction rule一般要看M[i][j]和M[i - 1][j], M[i][j - 1], M[i - 1][j - 1]之间关系</li>
+</ol>
+<h2 id="题型"><a href="#题型" class="headerlink" title="题型:"></a>题型:</h2><h3 id="Fibonacci"><a href="#Fibonacci" class="headerlink" title="Fibonacci"></a>Fibonacci</h3><h3 id="Longest-Ascending-SubArray-Contiguous-elements-in-an-array"><a href="#Longest-Ascending-SubArray-Contiguous-elements-in-an-array" class="headerlink" title="Longest Ascending SubArray (Contiguous elements in an array)"></a>Longest Ascending SubArray (Contiguous elements in an array)</h3><ol>
+<li>base case: M[0] = 1</li>
+<li>induction rule:<pre><code> a. M[i] represents [from the 0-th index to the i-th index] the length of the longest ascending subarray ended at the i-th element [MUST include the i-th index]
+ b. M[i] = 1 + M[i - 1]         iff input[i] &gt; input[i - 1]
+            = 1                           otherwise</code></pre>
+</li>
+</ol>
+<h3 id="Maximal-Product-when-Cutting-Rope"><a href="#Maximal-Product-when-Cutting-Rope" class="headerlink" title="Maximal Product when Cutting Rope"></a>Maximal Product when Cutting Rope</h3><h4 id="Two-ways"><a href="#Two-ways" class="headerlink" title="Two ways"></a>Two ways</h4><ol>
+<li>Solution0: DFS(recursion)<br> 例如: 如果我们的inputRope.length == 8, 我们枚举所有的cut都完成之后, 放在桌子上. 那么, 我们所有刀都切完了的状态下, 最右侧的那一段长度, 有几种可能性? - 7种, 从1m到7m<br> 最右侧的那一段, 在DP思想中(左大段+右小段)里的右小段. 因此, DFS方法对应的recursion tree里每一个node左侧的recursion function被DP左大段代替(通过查表方式, 而不是继续深入recur重复运算), 右小段就是rope本身的长度<br> Time: O(n!)</li>
+<li>Solution1: DP (左大段+右小段)<ol>
+<li><strong>Base case:</strong> M[1] = invalid input</li>
+<li><strong>Induction rule:</strong><ul>
+<li>M[i] represents the largest product of rope with length im</li>
+<li>M[i] = max{M[i], max{j, M[j]} * (i - j)}<br>linear scan and look back to the previous elements<br>所谓大段, 指的是不需要我们重新计算, 而是通过读表的方式直接读出M[i]的值而得到subsulotion<br>所谓小段, 指的是不读M[]表格, 直接manual操作(由题目已知条件直接得出)<br>Time = O(n ^ 2), space = (n)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="Dictionary-word-problem"><a href="#Dictionary-word-problem" class="headerlink" title="Dictionary word problem"></a>Dictionary word problem</h4><ol>
+<li><strong>Base case:</strong> M[0] = true (Empty input)</li>
+<li><strong>Induction rule:</strong><ul>
+<li>M[i] represents the largest product of rope with length im</li>
+<li>M[i] = true iff there exists M[i - j] == true &amp;&amp; dictSet.contains(substring(j, i))<br>= false otherwise</li>
+</ul>
+</li>
+</ol>
+<h3 id="Jump-Game"><a href="#Jump-Game" class="headerlink" title="Jump Game"></a>Jump Game</h3><p>从终点开始往回填表</p>
+<ol>
+<li><strong>Base case:</strong> M[n - 1] = true</li>
+<li><strong>Induction rule:</strong><ul>
+<li>M[i] represents whether we could reach index n-1 from index i</li>
+<li>M[i] = ture, iff there exists j, where j &lt;= i + input[i] AND M[j] == true</li>
+</ul>
+</li>
+</ol>
+<p><strong>Variant:</strong> Minimum Number of Jumps</p>
+<h3 id="Largest-sum-of-a-subarray"><a href="#Largest-sum-of-a-subarray" class="headerlink" title="Largest sum of a subarray"></a>Largest sum of a subarray</h3><ol>
+<li><strong>Base case:</strong> M[1] = invalid input</li>
+<li><strong>Induction rule:</strong> <ul>
+<li>M[i] represents the largest sum of the subarray from the index [0, i) to i </li>
+<li>M[i] = M[i - 1] + input[i] iff M[i - 1] &gt; 0<br>= input[i] iff M[i - 1] &lt;= 0<br>Time = O(n), Space = O(n)</li>
+</ul>
+</li>
+<li>How to optimize space:<br> lastMax is an optimization to M[i], using O(1) space.</li>
+<li>How to return the left-right border of the solution:<ul>
+<li>Use four temp variables: curLeft, curRight(i), globalLeft, globalRight</li>
+<li>When to change curLeft or curRight?<ol>
+<li>if lastMax &lt; 0: we reset out curLeft = curRight = i</li>
+<li>else: curRigth++;</li>
+</ol>
+</li>
+<li>When to change globalLeft or globalRight?<ul>
+<li>when globalMax is updated, then we set:<ul>
+<li>globalLeft = curLeft</li>
+<li>globalRight = curRight(i)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Edit-Distance"><a href="#Edit-Distance" class="headerlink" title="Edit Distance"></a>Edit Distance</h3><p>We grow the string from the left hand side to the right hand side</p>
+<ol>
+<li><strong>Base case:</strong><br> M[i][0] = i;<br> M[0][j] = j;</li>
+<li><strong>Induction rule:</strong><ul>
+<li>M[i][j] represents the min edit distance of 1.substring(0,i) &amp; 2.substring(0,j)</li>
+<li>M[i][j] = M[i - 1][j - 1] iff 1.charAt(i - 1) == 2.charAt(j - 1)<br>= min(M[i - 1][j], M[i][j - 1], M[i - 1][j - 1]) + 1 otherwise</li>
+</ul>
+</li>
+</ol>
+<h3 id="Largest-square-of-1’s-in-a-binary-matrix"><a href="#Largest-square-of-1’s-in-a-binary-matrix" class="headerlink" title="Largest square of 1’s in a binary matrix"></a>Largest square of 1’s in a binary matrix</h3><ol>
+<li><strong>Base case:</strong><br> M[i][0] = i;<br> M[0][j] = j;</li>
+<li><strong>Induction rule:</strong> <ul>
+<li>M[i][j] represents the max size of square with from (0, 0) to (i, j)</li>
+<li>M[i][j] = M[i - 1][j - 1] iff 1.charAt(i - 1) == 2.charAt(j - 1)<br>= min(M[i - 1][j], M[i][j - 1], M[i - 1][j - 1]) + 1 otherwise</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Life is hard, but food is easy. What about buying me a coffee.</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpeg" alt="Zichang Liu WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpeg" alt="Zichang Liu Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Array/" rel="tag"># Array</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/07/Autoboxing-and-Unboxing/" rel="prev" title="Autoboxing and Unboxing">
+                  <i class="fa fa-chevron-left"></i> Autoboxing and Unboxing
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zichang Liu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zichang.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://localhost:4000/2020/11/08/Dynamic-Programming/";
+    this.page.identifier = "2020/11/08/Dynamic-Programming/";
+    this.page.title = "Dynamic Programming";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zichang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
