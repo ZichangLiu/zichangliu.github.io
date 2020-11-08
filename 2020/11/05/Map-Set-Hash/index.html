@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpeg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="IntroductionMap:A collection that stores &lt;key, value&gt; pairs, such that no duplicate keys are allowed.The Java platform contains three general-purpose Map Implementations:  HashMap: which stores">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Map&#x2F;Set&#x2F;Hash">
+<meta property="og:url" content="http://localhost:4000/2020/11/05/Map-Set-Hash/index.html">
+<meta property="og:site_name" content="Zichang Liu">
+<meta property="og:description" content="IntroductionMap:A collection that stores &lt;key, value&gt; pairs, such that no duplicate keys are allowed.The Java platform contains three general-purpose Map Implementations:  HashMap: which stores">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-06T07:14:58.000Z">
+<meta property="article:modified_time" content="2020-11-08T02:03:55.136Z">
+<meta property="article:author" content="Zichang Liu">
+<meta property="article:tag" content="HashMap">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://localhost:4000/2020/11/05/Map-Set-Hash/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Map/Set/Hash | Zichang Liu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Zichang Liu</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome to my blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">13</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/projects/" rel="section"><i class="fa fa-sitemap fa-fw"></i>Projects</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.1.</span> <span class="nav-text">Map:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">1.2.</span> <span class="nav-text">Set:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">1.3.</span> <span class="nav-text">HashMap:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-Implementation"><span class="nav-number">2.</span> <span class="nav-text">HashMap Implementation:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">2.1.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-Compare-Rule"><span class="nav-number">2.2.</span> <span class="nav-text">HashMap Compare Rule:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap-use"><span class="nav-number">2.2.1.</span> <span class="nav-text">HashMap use:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Difference-Between-%E2%80%98-%E2%80%99-amp-%E2%80%98equals-%E2%80%99"><span class="nav-number">2.2.2.</span> <span class="nav-text">Difference Between ‘&#x3D;&#x3D;’ &amp; ‘equals()’</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode%E6%96%B9%E6%B3%95%E5%BE%88%E9%87%8D%E8%A6%81"><span class="nav-number">2.3.</span> <span class="nav-text">hashCode方法很重要!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rehashing"><span class="nav-number">2.4.</span> <span class="nav-text">Rehashing:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Load-factor"><span class="nav-number">2.5.</span> <span class="nav-text">Load factor:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#When-being-asked-to-write-a-data-structure"><span class="nav-number">2.6.</span> <span class="nav-text">When being asked to write a data structure:</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zichang Liu"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Zichang Liu</p>
+  <div class="site-description" itemprop="description">Freedom as Autonomy</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zichangliu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zichangliu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liuzichang9978@gmail.com" title="E-Mail → mailto:liuzichang9978@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zichang.liu.39/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;zichang.liu.39&#x2F;" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/zichang-liu-94511217a/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;zichang-liu-94511217a&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/zachary_zichangliu/" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;zachary_zichangliu&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/05/Map-Set-Hash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Zichang Liu">
+      <meta itemprop="description" content="Freedom as Autonomy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zichang Liu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Map/Set/Hash
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-05 23:14:58" itemprop="dateCreated datePublished" datetime="2020-11-05T23:14:58-08:00">2020-11-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-07 18:03:55" itemprop="dateModified" datetime="2020-11-07T18:03:55-08:00">2020-11-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/11/05/Map-Set-Hash/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/05/Map-Set-Hash/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Map"><a href="#Map" class="headerlink" title="Map:"></a>Map:</h3><p>A collection that stores &lt;key, value&gt; pairs, such that no duplicate keys are allowed.<br>The Java platform contains three general-purpose Map Implementations:</p>
+<ol>
+<li><strong>HashMap:</strong> which stores its elements in a hashtable, is the best-performing implementation; however, it makes no guarantees concerning the order of iteration</li>
+<li><strong>TreeMap:</strong> which stores its elements in a red-black tree(Balanced binary search tree), stores its elements based on their values.</li>
+<li><strong>LinkedHashMap:</strong> It is a HashMap and also it is a LinkedList. It maintains the order when each of the elements is inserted into the HashMap. (but high overhead)</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set:"></a>Set:</h3><p>A collection that can not contain duplicate elements.<br>The Java platform contains three general-purpose Set Implementations:</p>
+<ol>
+<li><strong>HashSet:</strong> implemented by HashMap by presetting value. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span></span>;</span><br></pre></td></tr></table></figure></li>
+<li><strong>TreeSet</strong></li>
+<li><strong>LinkedHashSet</strong></li>
+</ol>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap:"></a>HashMap:</h3><ol>
+<li>&lt;key, value&gt; pairs, <strong>not allow</strong> duplicate KEY<br> 本质: Call by key<br> 相比array和LinkedList查找O(n), HashMap的增删改查全部O(1)</li>
+<li>Common API:<ul>
+<li>V put(K key, V value);<ol>
+<li>int hash = hash(key); - hash</li>
+<li>int index = hash % array.length; - index</li>
+<li>search for the list resides in the bucket to see if the key already exists:<br> a. if not find the same key already existed, add a new Entry node to the list.<br> b. if find an Entry with the same key, update the value of that Entry.</li>
+</ol>
+</li>
+<li>V get(Object key);<ol>
+<li>int hash = hash(key); - hash</li>
+<li>int index = hash % array.length; - index</li>
+<li>search for the list resides in the bucket to see if the key already exists</li>
+</ol>
+</li>
+<li>V remove(Object key);</li>
+<li>boolean containsKey(Object key);</li>
+<li>boolean containsValue(Object value); - O(n) linear scan</li>
+<li>void clear();</li>
+<li>int size();</li>
+<li>boolean isEmpty();</li>
+<li>Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet();<ul>
+<li>get the set view of all the entries in the HashMap</li>
+</ul>
+</li>
+<li>Set<K> keySet();<ul>
+<li>get the set view of all the keys in the HashMap</li>
+</ul>
+</li>
+<li>Collection<V> values();<ul>
+<li>get the collection view of all the values in the HashMap</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HashMap iteration: <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">	System.out.println(entry.getKey());</span><br><span class="line">	System.out.println(entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>entrySet() - get the set view of all the entries in the HashMap</li>
+<li>Map.Entry&lt;String, Integer&gt; - the class that stores Key/Value pair in HashMap</li>
+<li>for (Integer num : array) - Enhanced for loop<br>equals to: for (int i = 0; i &lt; array.length; i++)</li>
+<li>Entry is a static nested class of HashMap, since it is very closely bonded to HashMap Class.<br>We need to access Entry Class outside from HashMap Class.</li>
+</ul>
+</li>
+<li>Iterators:<br> Sequentially traverse all the elements in the collection object, using when traverse hashmap remove.<br> To avoid <strong>ConcurrentModificationException</strong> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; iter = map.entrySet().iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">	Map.Entry&lt;String, Integer&gt; cur = iter.next();</span><br><span class="line">	iter.remove();</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure></li>
+<li>Efficient code accessing the HashMap:<br> <code>V getOrDefault(K key, V defaultValue); </code><br> Return the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.</li>
+<li>HashTable, Vector exist from Java 1.0 (are not used anymore)<br>ArrayList, HashMap introduced from Java 5</li>
+</ol>
+<h2 id="HashMap-Implementation"><a href="#HashMap-Implementation" class="headerlink" title="HashMap Implementation:"></a>HashMap Implementation:</h2><h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><ol>
+<li>An array of buckets (entries), using the array index to denote each bucket (entry).</li>
+<li>For each &lt;key, value&gt;, it goes to one of the buckets, the bucket index is determined by a hash function applied on key and array.length</li>
+<li>Collision control: Two keys mapped to the same bucket<ul>
+<li><strong>Separate Chaining</strong> (Close Addressing) - the element of each of the buckets is auctually a single LinkedList.<br>  Used by Java.</li>
+<li><strong>Open addressing</strong> - put the &lt;key, value&gt; pair into the ‘next’ available bucket:<ol>
+<li>How to define next: Linear/quadratic/exponential probing, hash again</li>
+<li>Challenge: handling removed keys in the map</li>
+<li>Not used by Java, but by some real life systems.<br>HashMap can only has one null key, which is always mapped to bucket 0.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="HashMap-Compare-Rule"><a href="#HashMap-Compare-Rule" class="headerlink" title="HashMap Compare Rule:"></a>HashMap Compare Rule:</h3><p>When iterating the corresponding entry for the given key, which is actually a singly LinkedList, we need compare each of the entry in the list, if the key is the same as the key we want.</p>
+<h4 id="HashMap-use"><a href="#HashMap-use" class="headerlink" title="HashMap use:"></a>HashMap use:</h4><ol>
+<li><code>key.hashCode()</code> to determine the entry index for the key.</li>
+<li><code>key.equals(anotherKey)</code> to determine whether two keys are the same keys.</li>
+</ol>
+<h4 id="Difference-Between-‘-’-amp-‘equals-’"><a href="#Difference-Between-‘-’-amp-‘equals-’" class="headerlink" title="Difference Between ‘==’ &amp; ‘equals()’"></a>Difference Between ‘==’ &amp; ‘equals()’</h4><p><strong>==:</strong></p>
+<ol>
+<li>Determine if two primitive types have the same value.</li>
+<li>Determine if two references are pointed to the same object.</li>
+</ol>
+<p><strong>equals(), hashCode():</strong></p>
+<ol>
+<li>Defined in Object Class, Object is the root class for any Java class.</li>
+<li>Any Java class implicitly extends Object class, so if in the subclass these two methods are not overridden, it inherits what it defines in Object class.</li>
+<li>The default implementation of equals() is check if the two references are pointed to the same object (same function as ‘==’)</li>
+<li>The defaulf implementation of hashCode() returns a “unique hash value” for the object based on its memory address.<ul>
+<li>Remember, in HashMap, key.hashCode() method determines which entry the key will go to, we need to guarantee the same keys always go to the same entry.</li>
+<li>Sometimes we do not want to compare the reference. We want to compare the object’s content: @Override</li>
+</ul>
+</li>
+</ol>
+<p>In Java, there is a contract between equals() and hashCode(), the developers need to maintain: </p>
+<ol>
+<li>If <code>one.equals(two) == true</code>, it is a must that <code>one.hashCode() == two.hashCode()</code></li>
+<li>If <code>one.hashCode() == two.hashCode()</code>, it is not necessary one.equals(two)<br>When you want to override equals(), please definitely override hashCode() as well.<br>Only by doing this, you can make sure the HashMap will still work for the key type.</li>
+</ol>
+<ul>
+<li>Set<Cell>, Map&lt;Cell, Integer&gt; // need to override equals() and hashCode()</li>
+<li>Set<String>                     // use equals() hashCode() from String<br>Set.add(x + “,” + y);         // “10,20”</li>
+</ul>
+<h3 id="hashCode方法很重要"><a href="#hashCode方法很重要" class="headerlink" title="hashCode方法很重要!"></a>hashCode方法很重要!</h3><ol>
+<li>The performance of HashMap solely depends on how good the hashCode() is.<ul>
+<li>Bad hashCode() can lead to linear time complexity in extreme case. </li>
+<li>e.g. all the keys has the same hash number returned by .hashCode()</li>
+</ul>
+</li>
+<li>Easy, fast, efficient</li>
+<li>Minimize collision, as evenly distrbuted as possible</li>
+</ol>
+<h3 id="Rehashing"><a href="#Rehashing" class="headerlink" title="Rehashing:"></a>Rehashing:</h3><ol>
+<li>Is needed when there are too many &lt;key, value&gt; pairs maintained in the HashMap, which causes too many collisions.</li>
+<li>Expand the array to a larger one and move all the &lt;key, value&gt; pairs to the new array (in HashMap by default, the array size is doubled each time)</li>
+<li>Rehashing is global wise - meaning all the &lt;key, value&gt; pairs need to participate</li>
+</ol>
+<h3 id="Load-factor"><a href="#Load-factor" class="headerlink" title="Load factor:"></a>Load factor:</h3><ol>
+<li>To control when rehashing is needed, maintain the ratio of number of &lt;key, value&gt; pairs.</li>
+<li>Default 0.75</li>
+<li>When the ratio exceeds the limit, rehashing will happen.</li>
+</ol>
+<h3 id="When-being-asked-to-write-a-data-structure"><a href="#When-being-asked-to-write-a-data-structure" class="headerlink" title="When being asked to write a data structure:"></a>When being asked to write a data structure:</h3><ol>
+<li>public API, Class struture</li>
+<li>Data -&gt; Fields</li>
+<li>Constructor: capacity, load factor (threshold), no parameter</li>
+<li>Implementation</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Life is hard, but food is easy. What about buying me a coffee.</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpeg" alt="Zichang Liu WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpeg" alt="Zichang Liu Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HashMap/" rel="tag"># HashMap</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/05/Graph-Search-Algorithm-II/" rel="prev" title="Graph Search Algorithm II">
+                  <i class="fa fa-chevron-left"></i> Graph Search Algorithm II
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/11/06/String/" rel="next" title="String">
+                  String <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zichang Liu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zichang.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://localhost:4000/2020/11/05/Map-Set-Hash/";
+    this.page.identifier = "2020/11/05/Map-Set-Hash/";
+    this.page.title = "Map/Set/Hash";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zichang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
