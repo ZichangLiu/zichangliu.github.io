@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="Freedom as Autonomy">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://localhost:4000/tags/index.html">
+  <meta name="description" content="Class and Object Class: a blueprint for a data type, scheme Object: a specific realization of any class, instance">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Class and Object">
+<meta property="og:url" content="http://localhost:4000/2020/11/10/Class-and-Object/index.html">
 <meta property="og:site_name" content="Zichang Liu">
-<meta property="og:description" content="Freedom as Autonomy">
+<meta property="og:description" content="Class and Object Class: a blueprint for a data type, scheme Object: a specific realization of any class, instance">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-15T06:55:31.000Z">
-<meta property="article:modified_time" content="2020-10-15T07:01:06.329Z">
+<meta property="article:published_time" content="2020-11-11T04:20:25.000Z">
+<meta property="article:modified_time" content="2020-11-11T04:53:52.929Z">
 <meta property="article:author" content="Zichang Liu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://localhost:4000/tags/">
+<link rel="canonical" href="http://localhost:4000/2020/11/10/Class-and-Object/">
 
 
 <script class="page-configurations">
@@ -43,13 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>tags | Zichang Liu
-</title>
+  <title>Class and Object | Zichang Liu</title>
   
 
 
@@ -175,7 +174,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -187,6 +186,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-and-Object"><span class="nav-number">1.</span> <span class="nav-text">Class and Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Encapsulation%E5%B0%81%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Data Encapsulation封装:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Abstraction-and-Access-Labels"><span class="nav-number">2.1.</span> <span class="nav-text">Data Abstraction and Access Labels</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-select-appropriate-labels"><span class="nav-number">2.2.</span> <span class="nav-text">How to select appropriate labels?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Singleton"><span class="nav-number">3.</span> <span class="nav-text">Singleton:</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -259,56 +259,203 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
       
-  
-  
 
       
 
-    
-    
-    
-    <div class="post-block" lang="en">
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/10/Class-and-Object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Zichang Liu">
+      <meta itemprop="description" content="Freedom as Autonomy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zichang Liu">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Class and Object
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
 
-<div class="post-meta-container">
+      <time title="Created: 2020-11-10 20:20:25 / Modified: 20:53:52" itemprop="dateCreated datePublished" datetime="2020-11-10T20:20:25-08:00">2020-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
   
-
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/11/10/Class-and-Object/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/10/Class-and-Object/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-  <div class="tag-cloud-title">
-    13 tags in total
-  </div>
-  <div class="tag-cloud-tags">
-    <a href="/tags/Array/" style="font-size: 24px;" class="tag-cloud-7">Array</a> <a href="/tags/BFS/" style="font-size: 12px;" class="tag-cloud-0">BFS</a> <a href="/tags/DFS/" style="font-size: 18px;" class="tag-cloud-3">DFS</a> <a href="/tags/Data-Type/" style="font-size: 12px;" class="tag-cloud-0">Data Type</a> <a href="/tags/Graph/" style="font-size: 18px;" class="tag-cloud-3">Graph</a> <a href="/tags/HashMap/" style="font-size: 12px;" class="tag-cloud-0">HashMap</a> <a href="/tags/Heap/" style="font-size: 12px;" class="tag-cloud-0">Heap</a> <a href="/tags/Linked-List/" style="font-size: 12px;" class="tag-cloud-0">Linked List</a> <a href="/tags/Queue/" style="font-size: 12px;" class="tag-cloud-0">Queue</a> <a href="/tags/Recursion/" style="font-size: 12px;" class="tag-cloud-0">Recursion</a> <a href="/tags/Stack/" style="font-size: 12px;" class="tag-cloud-0">Stack</a> <a href="/tags/String/" style="font-size: 12px;" class="tag-cloud-0">String</a> <a href="/tags/Tree/" style="font-size: 30px;" class="tag-cloud-10">Tree</a>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Class-and-Object"><a href="#Class-and-Object" class="headerlink" title="Class and Object"></a>Class and Object</h2><ol>
+<li>Class: a blueprint for a data type, scheme</li>
+<li>Object: a specific realization of any class, instance</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="Data-Encapsulation封装"><a href="#Data-Encapsulation封装" class="headerlink" title="Data Encapsulation封装:"></a>Data Encapsulation封装:</h2><h3 id="Data-Abstraction-and-Access-Labels"><a href="#Data-Abstraction-and-Access-Labels" class="headerlink" title="Data Abstraction and Access Labels"></a>Data Abstraction and Access Labels</h3><ol>
+<li>Providing only essential information to the outside world and hiding their background details</li>
+<li>Separate interface and implementation</li>
+<li>Access Labels: public, private, protected, default<ul>
+<li>public: everyone can access</li>
+<li>private: only myself can access (but only at class level, other objects of the same class can access as well)</li>
+<li>protected: only my children and same package can access</li>
+<li>(default): only the same package can access</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Class</th>
+<th>Package</th>
+<th>Subclass</th>
+<th>World</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>no modifier</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody></table>
+<p>package: com.example.lab vs. com.example</p>
+<blockquote>
+<p>Class internals are protected from inadvertent user-level errors, which might corrupt the state of the object.<br>The class implementation may evolve over time in response to changing requirements or bug reports without requiring change in user-level code (easier to maintain the compatibility)</p>
+</blockquote>
+<h3 id="How-to-select-appropriate-labels"><a href="#How-to-select-appropriate-labels" class="headerlink" title="How to select appropriate labels?"></a>How to select appropriate labels?</h3><p><strong>Principle:</strong> 给尽量低的权限</p>
+<ol>
+<li><strong>API:</strong> public</li>
+<li><strong>Internal implementation:</strong> private</li>
+<li><strong>Class Inheritance:</strong> do we need to use protected for methods/attributes<ul>
+<li>Protected methods: sometimes useful when we want to override an implementation in subclass</li>
+<li>Protected attributes: be careful, try to use private first</li>
+</ul>
+</li>
+<li><strong>“default” in Java(package-private):</strong> declare a class as public only when we define public API in it, otherwise package-private is good enough.</li>
+</ol>
+<h2 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton:"></a>Singleton:</h2><p>the Singleton pattern will ensure that there is only one instance of a class is created in the JVM. it is used to provide global point of access to the project.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Life is hard, but food is easy. What about buying me a coffee.</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpeg" alt="Zichang Liu WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpeg" alt="Zichang Liu Alipay">
+        <span>Alipay</span>
+      </div>
+
   </div>
 </div>
+
 
         
-      </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/10/Java-Introduction/" rel="prev" title="Java Introduction">
+                  <i class="fa fa-chevron-left"></i> Java Introduction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/11/10/Inheritance-Interface-Abstract-Class-Polymorphism/" rel="next" title="Inheritance, Interface, Abstract Class, Polymorphism">
+                  Inheritance, Interface, Abstract Class, Polymorphism <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
       
-      
-      
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
-    
-
-    
-    
-    
-
-
-      
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -401,6 +548,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://localhost:4000/2020/11/10/Class-and-Object/";
+    this.page.identifier = "2020/11/10/Class-and-Object/";
+    this.page.title = "Class and Object";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zichang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>

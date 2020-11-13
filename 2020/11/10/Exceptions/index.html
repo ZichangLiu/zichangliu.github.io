@@ -22,21 +22,20 @@
     var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="Comparison Table   Primitive type Wrapper class    int Integer   long Long   char Character   double Double   boolean Boolean">
+  <meta name="description" content="OverviewAn Exception indicates conditions that a reasonable application might want to catch. An Error indicates serious problems that a reasonable application should not try to catch.Throwable Class g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Autoboxing and Unboxing">
-<meta property="og:url" content="http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/index.html">
+<meta property="og:title" content="Exceptions">
+<meta property="og:url" content="http://localhost:4000/2020/11/10/Exceptions/index.html">
 <meta property="og:site_name" content="Zichang Liu">
-<meta property="og:description" content="Comparison Table   Primitive type Wrapper class    int Integer   long Long   char Character   double Double   boolean Boolean">
+<meta property="og:description" content="OverviewAn Exception indicates conditions that a reasonable application might want to catch. An Error indicates serious problems that a reasonable application should not try to catch.Throwable Class g">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-11-08T05:24:35.000Z">
-<meta property="article:modified_time" content="2020-11-08T05:32:17.048Z">
+<meta property="article:published_time" content="2020-11-11T07:45:13.000Z">
+<meta property="article:modified_time" content="2020-11-11T08:12:30.254Z">
 <meta property="article:author" content="Zichang Liu">
-<meta property="article:tag" content="Data Type">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/">
+<link rel="canonical" href="http://localhost:4000/2020/11/10/Exceptions/">
 
 
 <script class="page-configurations">
@@ -49,7 +48,7 @@
   };
 </script>
 
-  <title>Autoboxing and Unboxing | Zichang Liu</title>
+  <title>Exceptions | Zichang Liu</title>
   
 
 
@@ -187,7 +186,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-Table"><span class="nav-number">1.</span> <span class="nav-text">Comparison Table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-Details"><span class="nav-number">2.</span> <span class="nav-text">More Details</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-Details"><span class="nav-number">2.</span> <span class="nav-text">More Details</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RuntimeException-Unchecked-Exception"><span class="nav-number">2.1.</span> <span class="nav-text">RuntimeException&#x2F;Unchecked Exception</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Finally"><span class="nav-number">2.2.</span> <span class="nav-text">Finally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-catch"><span class="nav-number">2.3.</span> <span class="nav-text">Multiple catch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Throw-vs-Throws"><span class="nav-number">2.4.</span> <span class="nav-text">Throw vs. Throws</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#try-catch-finally%E8%A7%84%E5%88%99"><span class="nav-number">2.5.</span> <span class="nav-text">try-catch-finally规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%A4%84%E7%90%86Exception%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">四种处理Exception方法:</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -273,7 +272,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/10/Exceptions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -286,7 +285,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Autoboxing and Unboxing
+          Exceptions
         </h1>
 
         <div class="post-meta-container">
@@ -296,10 +295,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-11-07 21:24:35 / Modified: 21:32:17" itemprop="dateCreated datePublished" datetime="2020-11-07T21:24:35-08:00">2020-11-07</time>
+      <time title="Created: 2020-11-10 23:45:13" itemprop="dateCreated datePublished" datetime="2020-11-10T23:45:13-08:00">2020-11-10</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-11 00:12:30" itemprop="dateModified" datetime="2020-11-11T00:12:30-08:00">2020-11-11</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -319,8 +324,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/07/Autoboxing-and-Unboxing/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/07/Autoboxing-and-Unboxing/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/10/Exceptions/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/10/Exceptions/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -334,54 +339,92 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Comparison-Table"><a href="#Comparison-Table" class="headerlink" title="Comparison Table"></a>Comparison Table</h2><table>
-<thead>
-<tr>
-<th>Primitive type</th>
-<th>Wrapper class</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>Integer</td>
-</tr>
-<tr>
-<td>long</td>
-<td>Long</td>
-</tr>
-<tr>
-<td>char</td>
-<td>Character</td>
-</tr>
-<tr>
-<td>double</td>
-<td>Double</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>Boolean</td>
-</tr>
-</tbody></table>
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>An Exception indicates conditions that a reasonable application might want to catch. An Error indicates serious problems that a reasonable application should not try to catch.<br><strong>Throwable Class graph:</strong></p>
+<ul>
+<li>Error</li>
+<li>Exception <ul>
+<li>IOException (EOFException, FileNotFoundException, MalformedURLException, UnknownHostException) </li>
+<li>ClassNotFoundException </li>
+<li>CloneNotSupportedException </li>
+<li>RuntimeException<ul>
+<li>ArithmeticException</li>
+<li>ClassCastException</li>
+<li>IllegalArgumentException</li>
+<li>IllegalStateException</li>
+<li>IndexOutOfBoundsException</li>
+<li>NoSuchElementException</li>
+<li>NullPointerException</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <a id="more"></a>
 
-<h2 id="More-Details"><a href="#More-Details" class="headerlink" title="More Details"></a>More Details</h2><p>A wrapper class is just a wrapper of the corresponding primitive type, the Object representation of primitive type values<br>Similar to String, all the wrapper class objects are <strong>IMMUTABLE</strong> - interanl values cannot be changed initialization</p>
-<p><strong>It can help:</strong></p>
-<ol>
-<li>Generic type can not be primitive type, <code>List&lt;Integer&gt;</code>, there can not be <code>List&lt;int&gt;</code></li>
-<li>It can help provide usefule functionalities and contracts (json serializer: obj-&gt;json)</li>
-<li>How do you represent a “not existed” int value? “null” </li>
+<h2 id="More-Details"><a href="#More-Details" class="headerlink" title="More Details"></a>More Details</h2><h3 id="RuntimeException-Unchecked-Exception"><a href="#RuntimeException-Unchecked-Exception" class="headerlink" title="RuntimeException/Unchecked Exception"></a>RuntimeException/Unchecked Exception</h3><ol>
+<li><strong>RuntimeException:</strong> is a subclass of Exception. No need to catch it if you do not want to. <code>ArithmeticException, ArrayStoreException, ArrayIndexOutOfBoundsException, ClassCastException, etc</code></li>
+<li><strong>Checked Exception:</strong> Exceptions other than RuntimeEcception. Must use either try/catch block or throws.<blockquote>
+<p>Java认为CheckedException都是可以被处理的Exception, 所以Java程序必须要明确地处理Checked Exception. 如果程序没有处理CheckedException, 那么程序在编译时就会发生错误无法编译. 这体现了Java的设计哲学: 没有完善错误处理的代码根本没有机会被执行<br>Guideline: if a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception.</p>
+</blockquote>
+</li>
 </ol>
-<p>In industry, always prefer primitive types to wrapper classes. (Avoid extra overhead)</p>
-<p><strong>Autoboxing:</strong><br>Autoboxing is the automtic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes.</p>
-<p><strong>Unboxing:</strong><br>Unboxing is the reverse operation of autoboxing</p>
-<p>Integer class cache the Integer object with value from -128 to 127, so every time an Integer object within this range is needed, it will always return the corresponding object.<br>The unboxing is done only when it is necessary, for example, ==, &lt;, &gt;: </p>
-<ul>
-<li>The reference type will be subjected to unboxing conversion</li>
-<li>Unboxing null always throws NullPointerException</li>
+<h3 id="Finally"><a href="#Finally" class="headerlink" title="Finally"></a>Finally</h3><p><strong>Finally</strong> will always be executed (without exception or not), even with a return. (But not <code>System.exit(0)</code>)</p>
+<h3 id="Multiple-catch"><a href="#Multiple-catch" class="headerlink" title="Multiple catch"></a>Multiple catch</h3><p>Subclass must be before superclass</p>
+<h3 id="Throw-vs-Throws"><a href="#Throw-vs-Throws" class="headerlink" title="Throw vs. Throws"></a>Throw vs. Throws</h3><ol>
+<li><strong>Throw:</strong><br> The throw keyword in Java is used to explicitly throw an exception from a method or any block of code. General form of throw is: <code>throw Instance;</code><br> But this exception i.e, Instance must be type Throwable or a subclass of Throwable<br> Primitive data types such as int, char, floats and non-throwable classes cannot be used as exceptions</li>
+<li>The flow of execution of the program stops immediately after the throw statement is executed and <ul>
+<li>the nearest enclosing try block is checked to see if it has a catch statement that matches the type of exception<ul>
+<li>If it finds match, controlled is transferred to that statement</li>
+<li>otherwise next enclosing try block is checked and so on.<ul>
+<li>if no matching catch is found then the default exception handler will halt the program</li>
 </ul>
-<p><strong>Comparators revisited:</strong><br>When you implement you own Comparator or override equals(), keep in mind: </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Throws:</strong><ul>
+<li>Throws is a keyword in Java which is used in the head of method to indicate that this method might throw one of the listed type exceptions.</li>
+<li>The caller to these methods has to handle the exception.<br>e.g. type methodName (parameters) throws exceptionList {}<br>Here, the exceptionList is a comma separated list of all the exceptions which a method might throw.</li>
+</ul>
+ <strong>Throw is an action, throws is an indicator of a function.</strong></li>
+</ol>
+<h3 id="try-catch-finally规则"><a href="#try-catch-finally规则" class="headerlink" title="try-catch-finally规则"></a>try-catch-finally规则</h3><ol>
+<li>必须在try之后添加catch或finally block. try后可同时接catch和finally block, 但至少有一个block</li>
+<li>若代码同时使用catch和finally block, 则必须将catch块放在try块之后</li>
+<li>catch block于相应的Excetion Class的class type相关</li>
+<li>一个try block可能有多个catch block. 这种情况下, 总是执行第一个匹配的block</li>
+<li>在try-catch-finally结构中, 可重新抛出Exception</li>
+<li>try-catch-finally结构可以嵌套</li>
+<li>除了以下情况, 总是执行finally做为结束:<ul>
+<li>JVM过早终止(调用System.exit(int))</li>
+<li>在finally抛除一个未处理的异常</li>
+<li>计算机断电、失火或遭遇病毒攻击</li>
+</ul>
+</li>
+</ol>
+<h3 id="四种处理Exception方法"><a href="#四种处理Exception方法" class="headerlink" title="四种处理Exception方法:"></a>四种处理Exception方法:</h3><ol>
+<li><strong>Re-throw:</strong><br> If you run it, Java program will stop, and top level exception will be thrown</li>
+<li>Multiple catches</li>
+<li>Multiple catches in Java7<br> <code>catch (IllegalAccessException | NullPointerException) &#123;&#125;</code><ul>
+<li>Note: This is “|”, not “|”. This is just a syntax rule.</li>
+</ul>
+</li>
+<li><strong>Catch a parent class:</strong><br> This is okay. Because you are using “base” class. Both <code>NullPointerException</code> and <code>IllegalAccessException</code> are subclasses of Exception.</li>
+</ol>
+<p><strong>Do not catch Throwables (avoid catching errors)</strong></p>
+<p><strong>Throwable</strong></p>
 <ul>
-<li>Be very careful if you see “==” on Object type.</li>
+<li>Error</li>
+<li>Exception <ul>
+<li>unchecked exception</li>
+<li>checked exception   <ul>
+<li>接下这个exception然后处理掉: try-catch-finally</li>
+<li>不接然后甩给上一层: add throws to signature</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -409,21 +452,18 @@
   </div>
 </div>
 
-          <div class="post-tags">
-              <a href="/tags/Data-Type/" rel="tag"># Data Type</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/11/07/Bit-Representation-Bit-Operations/" rel="prev" title="Bit Representation & Bit Operations">
-                  <i class="fa fa-chevron-left"></i> Bit Representation & Bit Operations
+                <a href="/2020/11/10/Inheritance-Interface-Abstract-Class-Polymorphism/" rel="prev" title="Inheritance, Interface, Abstract Class, Polymorphism">
+                  <i class="fa fa-chevron-left"></i> Inheritance, Interface, Abstract Class, Polymorphism
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/11/08/Dynamic-Programming/" rel="next" title="Dynamic Programming">
-                  Dynamic Programming <i class="fa fa-chevron-right"></i>
+                <a href="/2020/11/11/Nested-Class/" rel="next" title="Nested Class">
+                  Nested Class <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -539,9 +579,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/";
-    this.page.identifier = "2020/11/07/Autoboxing-and-Unboxing/";
-    this.page.title = "Autoboxing and Unboxing";
+    this.page.url = "http://localhost:4000/2020/11/10/Exceptions/";
+    this.page.identifier = "2020/11/10/Exceptions/";
+    this.page.title = "Exceptions";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

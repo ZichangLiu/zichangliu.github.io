@@ -22,21 +22,20 @@
     var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="Comparison Table   Primitive type Wrapper class    int Integer   long Long   char Character   double Double   boolean Boolean">
+  <meta name="description" content="IntroductionDefinition:A nested class is any class whose declaration occurs within the body of another class or interface. A top level class is a class that is not a nested class. in Solution.java: 12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Autoboxing and Unboxing">
-<meta property="og:url" content="http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/index.html">
+<meta property="og:title" content="Nested Class">
+<meta property="og:url" content="http://localhost:4000/2020/11/11/Nested-Class/index.html">
 <meta property="og:site_name" content="Zichang Liu">
-<meta property="og:description" content="Comparison Table   Primitive type Wrapper class    int Integer   long Long   char Character   double Double   boolean Boolean">
+<meta property="og:description" content="IntroductionDefinition:A nested class is any class whose declaration occurs within the body of another class or interface. A top level class is a class that is not a nested class. in Solution.java: 12">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-11-08T05:24:35.000Z">
-<meta property="article:modified_time" content="2020-11-08T05:32:17.048Z">
+<meta property="article:published_time" content="2020-11-11T08:15:33.000Z">
+<meta property="article:modified_time" content="2020-11-13T22:50:03.031Z">
 <meta property="article:author" content="Zichang Liu">
-<meta property="article:tag" content="Data Type">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/">
+<link rel="canonical" href="http://localhost:4000/2020/11/11/Nested-Class/">
 
 
 <script class="page-configurations">
@@ -49,7 +48,7 @@
   };
 </script>
 
-  <title>Autoboxing and Unboxing | Zichang Liu</title>
+  <title>Nested Class | Zichang Liu</title>
   
 
 
@@ -187,7 +186,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-Table"><span class="nav-number">1.</span> <span class="nav-text">Comparison Table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-Details"><span class="nav-number">2.</span> <span class="nav-text">More Details</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-between-non-static-nested-class-and-static-nested-class"><span class="nav-number">2.</span> <span class="nav-text">Difference between non-static nested class and static nested class:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-top-level-class-in-the-same-Java-file"><span class="nav-number">3.</span> <span class="nav-text">Multiple top-level class in the same Java file:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-between-nested-class-and-helper-class"><span class="nav-number">4.</span> <span class="nav-text">Difference between nested class and helper class:</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -273,7 +272,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/11/Nested-Class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -286,7 +285,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Autoboxing and Unboxing
+          Nested Class
         </h1>
 
         <div class="post-meta-container">
@@ -296,10 +295,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-11-07 21:24:35 / Modified: 21:32:17" itemprop="dateCreated datePublished" datetime="2020-11-07T21:24:35-08:00">2020-11-07</time>
+      <time title="Created: 2020-11-11 00:15:33" itemprop="dateCreated datePublished" datetime="2020-11-11T00:15:33-08:00">2020-11-11</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-13 14:50:03" itemprop="dateModified" datetime="2020-11-13T14:50:03-08:00">2020-11-13</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -319,8 +324,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/07/Autoboxing-and-Unboxing/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/07/Autoboxing-and-Unboxing/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/11/Nested-Class/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/11/Nested-Class/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -334,55 +339,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Comparison-Table"><a href="#Comparison-Table" class="headerlink" title="Comparison Table"></a>Comparison Table</h2><table>
-<thead>
-<tr>
-<th>Primitive type</th>
-<th>Wrapper class</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>Integer</td>
-</tr>
-<tr>
-<td>long</td>
-<td>Long</td>
-</tr>
-<tr>
-<td>char</td>
-<td>Character</td>
-</tr>
-<tr>
-<td>double</td>
-<td>Double</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>Boolean</td>
-</tr>
-</tbody></table>
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>Definition:</strong><br>A nested class is any class whose declaration occurs within the body of another class or interface. A top level class is a class that is not a nested class.</p>
+<p><strong>in Solution.java:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OuterClass</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NestedStaticClass</span></span>&#123;&#125;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;&#125;</span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
-<h2 id="More-Details"><a href="#More-Details" class="headerlink" title="More Details"></a>More Details</h2><p>A wrapper class is just a wrapper of the corresponding primitive type, the Object representation of primitive type values<br>Similar to String, all the wrapper class objects are <strong>IMMUTABLE</strong> - interanl values cannot be changed initialization</p>
-<p><strong>It can help:</strong></p>
-<ol>
-<li>Generic type can not be primitive type, <code>List&lt;Integer&gt;</code>, there can not be <code>List&lt;int&gt;</code></li>
-<li>It can help provide usefule functionalities and contracts (json serializer: obj-&gt;json)</li>
-<li>How do you represent a “not existed” int value? “null” </li>
+<ul>
+<li>It is a way of logically grouping classes that are only used in one place: If a class is useful to only one other class, then it is logical to embed it in that class and keep the two together. Nesting such “helper classes” makes their package more streamlined.</li>
+<li>It increases encapsulation: Consider two top-level classes, A and B, where B needs access to members of A that would otherwise be declared private. By hiding class B within class A, A’s members can be declared private and B can access them. In addition, B itself can be hidden from the outside would.</li>
+<li>It can lead to more readable and maintainable code: Nesting small classes within top-level classes places the code closer to where it is used.</li>
+</ul>
+<p>Static member     属于 Class<br>Non-static member 属于 Instance</p>
+<p>Only a nested class can be declared static. It belongs to the OuterClass such that we don’t need to initialize OuterClass but to initialize the nest class directly.<br><code>OuterClass.NestedStaticClass c1 = new OuterClass.NestedStaticClass();</code></p>
+<h3 id="Difference-between-non-static-nested-class-and-static-nested-class"><a href="#Difference-between-non-static-nested-class-and-static-nested-class" class="headerlink" title="Difference between non-static nested class and static nested class:"></a>Difference between non-static nested class and static nested class:</h3><ol>
+<li>Inner class (or Non-static nested class) needs a reference of OuterClass.</li>
+<li>Inner class (or non-static nested class) can access both static and non-static members of Outer class. A static class cannot access non-static members of the Outer class. It can access only static members of Outer class (StaticNestedClass只能访问outer class的static member, 不能访问non-static member, InnerClass都能访问)</li>
+<li>An instance of InnerClass cannot be created without an instance of the Outer class in which it nests, so we don’t need to pass a reference of an object to the constructor of the InnerClass. For this reason InnerClasses can make program simple and concise (Inner class里可以直接拿到outer class的这个instance的reference: OuterClass.this)</li>
 </ol>
-<p>In industry, always prefer primitive types to wrapper classes. (Avoid extra overhead)</p>
-<p><strong>Autoboxing:</strong><br>Autoboxing is the automtic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes.</p>
-<p><strong>Unboxing:</strong><br>Unboxing is the reverse operation of autoboxing</p>
-<p>Integer class cache the Integer object with value from -128 to 127, so every time an Integer object within this range is needed, it will always return the corresponding object.<br>The unboxing is done only when it is necessary, for example, ==, &lt;, &gt;: </p>
+<p>Static method can only be declared in a top-level class or a static class.<br><code>OuterClass.InnerClass innerObject = new OuterClass().new InnerClass();</code></p>
+<p>Prefer nested static class to inner class.<br>When you have to access members belong to instance you can only use inner class.</p>
+<p><strong>Local Class:</strong> Defined in a method<br><strong>Anonymous class:</strong> Defined in a method with just new and no definition</p>
+<p><strong>Class graph:</strong></p>
 <ul>
-<li>The reference type will be subjected to unboxing conversion</li>
-<li>Unboxing null always throws NullPointerException</li>
+<li>Top-level class</li>
+<li>Nested class<ul>
+<li>Static nested class</li>
+<li>Inner class (non-static nested class)</li>
+<li>Local class<ul>
+<li>Anonymous class (Comparators, etc. &lt;- Lambda)</li>
 </ul>
-<p><strong>Comparators revisited:</strong><br>When you implement you own Comparator or override equals(), keep in mind: </p>
-<ul>
-<li>Be very careful if you see “==” on Object type.</li>
+</li>
 </ul>
+</li>
+</ul>
+<h3 id="Multiple-top-level-class-in-the-same-Java-file"><a href="#Multiple-top-level-class-in-the-same-Java-file" class="headerlink" title="Multiple top-level class in the same Java file:"></a>Multiple top-level class in the same Java file:</h3><p>Only one top-level class can be declared public in a Java file. The others have no access modifier (private, protected) nor static. Usually there are helper classes. The purpose of including multiple classes in one source file is to bundle related support functionality (internal data structures, support classes, etc) together with the main public class.</p>
+<h3 id="Difference-between-nested-class-and-helper-class"><a href="#Difference-between-nested-class-and-helper-class" class="headerlink" title="Difference between nested class and helper class:"></a>Difference between nested class and helper class:</h3><ol>
+<li>A nested class has access to private members of the outer class but helper class does not.</li>
+<li>You may want your helper class to help multiple classes in the same package.</li>
+<li>A static nested class can be declared public but not for helper class.</li>
+<li>By design: Nesting a class (statically in Java) sends a clear message of intent: the nested class. It is only relevant and usable to support the outer class. It has no meaning on its own. (coupling耦合)</li>
+</ol>
 
     </div>
 
@@ -409,22 +405,16 @@
   </div>
 </div>
 
-          <div class="post-tags">
-              <a href="/tags/Data-Type/" rel="tag"># Data Type</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/11/07/Bit-Representation-Bit-Operations/" rel="prev" title="Bit Representation & Bit Operations">
-                  <i class="fa fa-chevron-left"></i> Bit Representation & Bit Operations
+                <a href="/2020/11/10/Exceptions/" rel="prev" title="Exceptions">
+                  <i class="fa fa-chevron-left"></i> Exceptions
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/11/08/Dynamic-Programming/" rel="next" title="Dynamic Programming">
-                  Dynamic Programming <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -539,9 +529,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://localhost:4000/2020/11/07/Autoboxing-and-Unboxing/";
-    this.page.identifier = "2020/11/07/Autoboxing-and-Unboxing/";
-    this.page.title = "Autoboxing and Unboxing";
+    this.page.url = "http://localhost:4000/2020/11/11/Nested-Class/";
+    this.page.identifier = "2020/11/11/Nested-Class/";
+    this.page.title = "Nested Class";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
