@@ -22,22 +22,20 @@
     var CONFIG = {"hostname":"localhost","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="1. Basic ConceptsQueue Wait in line, FIFO Usages: Breadth-First Search related problems  Stack LIFO: Last in first out 竹筒&#x2F;羽毛球筒 All operations can only be done to top element. push(), pop(), peek() Usa">
+  <meta name="description" content="Defination: Types are parameters (Types can be various) Java Generic methods and generic classes enable programmers to specify:  with a single method declaration, a set of related methods, or with a s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Queue &amp; Stack">
-<meta property="og:url" content="http://localhost:4000/2020/11/01/Queue-Stack/index.html">
+<meta property="og:title" content="Generics">
+<meta property="og:url" content="http://localhost:4000/2020/11/14/Generics/index.html">
 <meta property="og:site_name" content="Zichang Liu">
-<meta property="og:description" content="1. Basic ConceptsQueue Wait in line, FIFO Usages: Breadth-First Search related problems  Stack LIFO: Last in first out 竹筒&#x2F;羽毛球筒 All operations can only be done to top element. push(), pop(), peek() Usa">
+<meta property="og:description" content="Defination: Types are parameters (Types can be various) Java Generic methods and generic classes enable programmers to specify:  with a single method declaration, a set of related methods, or with a s">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-11-02T06:24:42.000Z">
-<meta property="article:modified_time" content="2020-11-02T06:30:47.677Z">
+<meta property="article:published_time" content="2020-11-15T05:23:23.000Z">
+<meta property="article:modified_time" content="2020-11-16T02:50:24.870Z">
 <meta property="article:author" content="Zichang Liu">
-<meta property="article:tag" content="Queue">
-<meta property="article:tag" content="Stack">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://localhost:4000/2020/11/01/Queue-Stack/">
+<link rel="canonical" href="http://localhost:4000/2020/11/14/Generics/">
 
 
 <script class="page-configurations">
@@ -50,7 +48,7 @@
   };
 </script>
 
-  <title>Queue & Stack | Zichang Liu</title>
+  <title>Generics | Zichang Liu</title>
   
 
 
@@ -176,7 +174,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -188,7 +186,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Basic-Concepts"><span class="nav-number">1.</span> <span class="nav-text">1. Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">1.1.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stack"><span class="nav-number">1.2.</span> <span class="nav-text">Stack</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Four-popular-queue-stack-related-interview-questions"><span class="nav-number">2.</span> <span class="nav-text">2. Four popular queue-stack related interview questions:</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -274,7 +271,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/01/Queue-Stack/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2020/11/14/Generics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -287,7 +284,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Queue & Stack
+          Generics
         </h1>
 
         <div class="post-meta-container">
@@ -297,17 +294,23 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-11-01 22:24:42 / Modified: 22:30:47" itemprop="dateCreated datePublished" datetime="2020-11-01T22:24:42-08:00">2020-11-01</time>
+      <time title="Created: 2020-11-14 21:23:23" itemprop="dateCreated datePublished" datetime="2020-11-14T21:23:23-08:00">2020-11-14</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-15 18:50:24" itemprop="dateModified" datetime="2020-11-15T18:50:24-08:00">2020-11-15</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a>
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
     </span>
 
@@ -320,8 +323,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/01/Queue-Stack/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/01/Queue-Stack/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/14/Generics/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/14/Generics/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -335,24 +338,61 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="1-Basic-Concepts"><a href="#1-Basic-Concepts" class="headerlink" title="1. Basic Concepts"></a>1. Basic Concepts</h2><h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><ol>
-<li>Wait in line, FIFO</li>
-<li>Usages: Breadth-First Search related problems</li>
-</ol>
-<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><ol>
-<li>LIFO: Last in first out 竹筒/羽毛球筒</li>
-<li>All operations can only be done to top element.<br> push(), pop(), peek()</li>
-<li>Usage: 从左至右linear scan一个array/string时, 如果要不断回头看左边最新的元素时, 往往用到stack<br> a. String repeatedly deduplication (cabba -&gt; caa -&gt; c);<br> b. Reverse Polish Notation 逆波兰表达式的计算;<br> c. Histogram中找最大长方形.</li>
-</ol>
+        <p>Defination: Types are parameters (Types can be various)</p>
+<p>Java Generic methods and generic classes enable programmers to specify:</p>
+<ul>
+<li>with a single method declaration, a set of related methods, or</li>
+<li>with a single class declaration, a set of related types</li>
+</ul>
 <a id="more"></a>
 
-<p><strong>Key points:</strong><br>    a. 将Stack1所有元素全部move到Stack2, 元素在Stack2中的顺序完全reverse<br>    b. 将Stack1所有元素move到Stack2, 然后元素全部(或部分)move回Stack1, 则回到原来Stack1的元素的顺序不变.</p>
-<p><strong>Amortized time VS average time</strong><br>    Amortized time: for any specific input, we amortize all operations within this input<br>    Average time: the average of all possible inputs in the input space (e.g., quickSort)</p>
-<h2 id="2-Four-popular-queue-stack-related-interview-questions"><a href="#2-Four-popular-queue-stack-related-interview-questions" class="headerlink" title="2. Four popular queue-stack related interview questions:"></a>2. Four popular queue-stack related interview questions:</h2><ol>
-<li>How to sort numbers with three (or two) stacks O(n^2)<br> //SelectionSort思想(找GlobalMin), 若用两个stack则将第二个同时作为Buffer&amp;result</li>
-<li>How to implement a queue by using two stacks<br> //queue.add() = O(1)<br> //queue.pop() = O(n) worst case O(1) Amortized time</li>
-<li>How to implement the min() function when using stack with time complexity O(1) for each operation<br> //two stacks, 同步加同步减<br> 3.1 followup: How to optimize the space usage of stack2 in average cases(Assuming there are a lot of duplicates in input numbers)<br> //Stack2(min) [&lt;1,1&gt; &lt;-1,9&gt;<br> //Semantic = pair&lt;value, Size of stack1, when the value 1 becomes the globalMin for the 1st time&gt;</li>
-<li>How to use multiple stacks to implement a deque(double-end queue), which has 4 APIs: left.add(); left.remove(); right.add(); right.remove();<br> 4.1 followup: Use 3 stacks to improve the time complexity of remove() operation.</li>
+<p>A type or method to operate on objects of various types while providing compile-time type safety<br>(vs. runtime safety: too late, exceptions)<br>Compiler would make sure the type is right during the compile-time (not runtime) so as to remind you before running this application.</p>
+<p>You can write a single generic method declaration that can be called with arguments of different types. Based on the types of the arguments passed to the generic method, the compiler handles each method call appropriately.</p>
+<ol>
+<li>Syntax: All generic method declarations have a type parameter section delimited by angle brackets (&lt;&gt;) that precedes the method’s return type:<br> public static <E> E method(E[] input)</li>
+<li>Number of Generics: Each type parameter section contains one or more type parameters separated by commas:<br> public static &lt;A, B, C&gt; void method(A[] array, List<B> list, Queue<C> queue)</li>
+<li>Applicable Uses: <ul>
+<li>member variable</li>
+<li>method parameter</li>
+<li>method return type</li>
+<li>method local variable</li>
+</ul>
+</li>
+<li>Object only: A generic method’s body is declared like that of any other method. Note that type parameters can represent only reference types, not primitive types (like int, double and char)</li>
+</ol>
+<p>Advanced Feature</p>
+<ol>
+<li>From a syntax point of view: E can be any object, &lt; may not compile</li>
+<li>From a logical point of view: To find the minimum, E should be comparable. If it is a random Object type, &lt; may not make sense.</li>
+</ol>
+<hr>
+<ol>
+<li>There may be times when you’ll want to restrict the kinds of types that are allowed to be passed to a type parameter.</li>
+<li>For example, a method that operates on numbers might only want to accept instances of NUMBER or its subclasses. This is what bounded type parameters are for.</li>
+<li>To declare a bounded type parameter, list the type parameter’s name, followed by the extends keyword, followed by its upper bound.</li>
+</ol>
+<p>Generic Class: Only the class needs to be parameterized: its method function does not need <T> anymore<br>When you create object:<br>    a. <code>Node&lt;Integer&gt; node = new Node&lt;&gt;(1);</code><br>    b. <code>Node&lt;Integer&gt; node = new Node(1); //is not good (Warning)</code></p>
+<p>Java泛型实现原理: 类型擦除保留原始类型(Type Erasure)<br>从类型擦除可以看出:</p>
+<ol>
+<li>必须是Object继承的类型作为泛型类型, 不然没法转成Object</li>
+<li>运行期类型检查职能看到原始类型, 如ArrayList<Integer>只能看到ArrayList不能看到Integer</li>
+<li>新建一个泛型类指定的对象是不可以的, 比如: K temp = new K();</li>
+<li>编译器自动加入类型的强制转换, 比如:<br> <code>ArrayList&lt;Employee&gt; emps = ...;</code><br> <code>Employee e = emps.get(0);</code><br> -&gt; 先获取Object对象, 再类型转换成Employee</li>
+</ol>
+<p>Subclass and Superclass in Generics<br>A subclass can always be casted to a superclass but not the other way<br>In Generics, it’s different:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;Fruit&gt; fruits = apples; <span class="comment">//not allowed</span></span><br><span class="line">fruits.add(<span class="keyword">new</span> Apple());  <span class="comment">//ok</span></span><br><span class="line">fruits.add(<span class="keyword">new</span> Orange()); <span class="comment">//ok</span></span><br></pre></td></tr></table></figure>
+<p>If you allow fruits = apples, then we may do fruits.add(new Orange()), but Orange is not Apple<br>Generics check the type during compiling time. In contrast, Array does not<br>So when we want to use a super/subclass when working with generic references, we do:<br>    <code>&lt;? Extends T&gt;</code> or <code>&lt;? Super T&gt;</code></p>
+<p>通配符的使用(Wildcard)<br><code>? extends</code> (Upper Bounded Wildcard)<br><code>? super</code> (Lower Bounded Wildcard)<br>Why? It only knows apples is a list of objects that are superclass of Apple, but not which superclass in the inheritance tree.<br>Conclusion: To get data use <code>&lt;? extends&gt;</code>, to write data use <code>&lt;? super&gt;</code></p>
+<p>The general rule is to use wildcards when you can because code with wildcards is generally more readable than code with multiple type parameters. When deciding if you need a type variable, ask yourself if that type variable is used to related two or more parameters, ot to relate a parameter type with the return type. If the answer is no, then a wildcard should suffice.</p>
+<p>泛型类型与通配符使用比较:<br>泛型类型: 有个类型叫T, 可以用T干很多事情<br>通配符: 我不知道的一个类型, 不能直接用?, 需要类型捕获之后用</p>
+<ol>
+<li>有时候看起来功能是一样的<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span></span>;</span><br></pre></td></tr></table></figure>
+VS<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line"><span class="keyword">public</span> &lt;T extends E&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;T&gt; c)</span></span>;</span><br></pre></td></tr></table></figure></li>
+<li>有时候不行(必须使用泛型类型)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Number&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(List&lt;T&gt; dest, List&lt;T&gt; src)</span></span>;</span><br></pre></td></tr></table></figure>
+和下列写法不等<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(List&lt;? extends Number&gt; dest, List&lt;? extends Number&gt; src)</span></span>;</span><br></pre></td></tr></table></figure>
+无法约束dest和src间类型一致的要求</li>
+<li>多类型约束(必须使用泛型类型)<br> 不能写<code>&lt;? extends X &amp; Y&gt;</code></li>
+<li>有时候不行(必须使用通配符)<br> 用Lower Bounded Wildcard的时候, 不能写<code>&lt;T super X&gt;</code></li>
 </ol>
 
     </div>
@@ -380,23 +420,16 @@
   </div>
 </div>
 
-          <div class="post-tags">
-              <a href="/tags/Queue/" rel="tag"># Queue</a>
-              <a href="/tags/Stack/" rel="tag"># Stack</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/10/21/Linked-List/" rel="prev" title="Linked List">
-                  <i class="fa fa-chevron-left"></i> Linked List
+                <a href="/2020/11/14/Iterator/" rel="prev" title="Iterator">
+                  <i class="fa fa-chevron-left"></i> Iterator
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/11/01/Binary-Tree-Binary-Search-Tree/" rel="next" title="Binary Tree & Binary Search Tree">
-                  Binary Tree & Binary Search Tree <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -511,9 +544,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://localhost:4000/2020/11/01/Queue-Stack/";
-    this.page.identifier = "2020/11/01/Queue-Stack/";
-    this.page.title = "Queue & Stack";
+    this.page.url = "http://localhost:4000/2020/11/14/Generics/";
+    this.page.identifier = "2020/11/14/Generics/";
+    this.page.title = "Generics";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
